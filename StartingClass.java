@@ -57,11 +57,11 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         int x = 0;
         int y = 0;
 
-        for (x = 0; x <= 1 ; x++)
+        // Generate corners for all the rooms.
+        for (x = 0; x <= 9 ; x++)
         {
-
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
+            for (y = 0; y <= 9 ; y++)
+            {
                 Grid g = new Tile (25 + (x * 450), 25  + ( y * 450)  );
                 gridlist.add(g);
                 g = new Tile (25 + (x * 450), 75  + ( y * 450)  );
@@ -76,7 +76,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 gridlist.add(g);
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
-
                 g = new Tile (75 + (x * 450), 25  + ( y * 450)  );
                 gridlist.add(g);
                 g = new Tile (125 + (x * 450), 25  + ( y * 450)  );
@@ -87,10 +86,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 gridlist.add(g);
                 g = new Tile (425 + (x * 450), 25  + ( y * 450)  );
                 gridlist.add(g);
-
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
-
                 g = new Tile (425 + (x * 450), 75  + ( y * 450)  );
                 gridlist.add(g);
                 g = new Tile (425 + (x * 450), 125  + ( y * 450)  );
@@ -101,10 +98,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 gridlist.add(g);
                 g = new Tile (425 + (x * 450), 425  + ( y * 450)  );
                 gridlist.add(g);
-
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
-
                 g = new Tile (75 + (x * 450), 425  + ( y * 450)  );
                 gridlist.add(g);
                 g = new Tile (125 + (x * 450), 425  + ( y * 450)  );
@@ -113,11 +108,11 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 gridlist.add(g);
                 g = new Tile (375 + (x * 450), 425  + ( y * 450)  );
                 gridlist.add(g);
-            }
+            }      
+        }
         
-            
-                     x = 0;
-         y = 0;
+        
+        /* the entrances for each room. used to fill in sides of a room that are walls.
         ////////////////////////////////////////////////
         ////////////////////////////////////////////////
         // left entrance
@@ -151,6 +146,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         gridlist.add(g);
         g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
         gridlist.add(g);
+         */
     }
 
     @Override
