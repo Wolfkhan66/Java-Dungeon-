@@ -3,27 +3,14 @@ import java.awt.Graphics;
 
 public class Player {
 
-    private int centerX = 15;
-    private int centerY = 15;
+    private int centerX = 400;
+    private int centerY = 240;
     private int speedX = 0;
     private int speedY = 0;
 
 
 
     public void update() {
-        if (speedX < 0) {
-            centerX += speedX; //This changes centerX by adding speedX.
-        }
-        else if (speedX > 0) {
-            centerX += speedX; //This changes centerX by adding speedX.
-        }
-
-        if (speedY < 0) {
-            centerY += speedY; //This changes centerY by adding speedY.
-        }
-        else if (speedY > 0) {
-            centerY += speedY; //This changes centerY by adding speedY.
-        }
     }
 
     public void moveRight() {

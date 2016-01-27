@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
-    private Player player;
+    private static Player player;
     private Image image, character, tile;
     private Graphics second;
     private URL base;
@@ -336,6 +336,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void keyTyped(KeyEvent e) {
         // TODO Auto-generated method stub
 
+    }
+    
+    public static Player getplayer() {
+     return player;   
     }
 
 }
