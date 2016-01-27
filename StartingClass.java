@@ -57,93 +57,102 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         int x = 0;
         int y = 0;
 
-        ////////////////////////////////////////////////
-        ////////////////////////////////////////////////
-        Grid g = new Tile (25 + (x * 90), 25  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (25 + (x * 90), 75  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (25 + (x * 90), 125  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (25 + (x * 90), 325  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (25 + (x * 90), 375  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (25 + (x * 90), 425  + ( y * 90)  );
-        gridlist.add(g);
-        ////////////////////////////////////////////////
-        ////////////////////////////////////////////////
+        for (x = 0; x <= 1 ; x++)
+        {
+
+                ////////////////////////////////////////////////
+                ////////////////////////////////////////////////
+                Grid g = new Tile (25 + (x * 450), 25  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (25 + (x * 450), 75  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (25 + (x * 450), 125  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (25 + (x * 450), 325  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (25 + (x * 450), 375  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (25 + (x * 450), 425  + ( y * 450)  );
+                gridlist.add(g);
+                ////////////////////////////////////////////////
+                ////////////////////////////////////////////////
+
+                g = new Tile (75 + (x * 450), 25  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (125 + (x * 450), 25  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (325 + (x * 450), 25  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (375 + (x * 450), 25  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (425 + (x * 450), 25  + ( y * 450)  );
+                gridlist.add(g);
+
+                ////////////////////////////////////////////////
+                ////////////////////////////////////////////////
+
+                g = new Tile (425 + (x * 450), 75  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (425 + (x * 450), 125  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (425 + (x * 450), 325  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (425 + (x * 450), 375  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (425 + (x * 450), 425  + ( y * 450)  );
+                gridlist.add(g);
+
+                ////////////////////////////////////////////////
+                ////////////////////////////////////////////////
+
+                g = new Tile (75 + (x * 450), 425  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (125 + (x * 450), 425  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (325 + (x * 450), 425  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (375 + (x * 450), 425  + ( y * 450)  );
+                gridlist.add(g);
+            }
         
-        g = new Tile (75 + (x * 90), 25  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (125 + (x * 90), 25  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (325 + (x * 90), 25  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (375 + (x * 90), 25  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (425 + (x * 90), 25  + ( y * 90)  );
-        gridlist.add(g);
-        
-        ////////////////////////////////////////////////
-        ////////////////////////////////////////////////
-        
-        g = new Tile (425 + (x * 90), 75  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (425 + (x * 90), 125  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (425 + (x * 90), 325  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (425 + (x * 90), 375  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (425 + (x * 90), 425  + ( y * 90)  );
-        gridlist.add(g);
-        
-        ////////////////////////////////////////////////
-        ////////////////////////////////////////////////
-        
-        g = new Tile (75 + (x * 90), 425  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (125 + (x * 90), 425  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (325 + (x * 90), 425  + ( y * 90)  );
-        gridlist.add(g);
-        g = new Tile (375 + (x * 90), 425  + ( y * 90)  );
-        gridlist.add(g);
-        
+            
+                     x = 0;
+         y = 0;
         ////////////////////////////////////////////////
         ////////////////////////////////////////////////
         // left entrance
-        g = new Tile (25 + (x * 90), 175  + ( y * 90)  );
+        Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (25 + (x * 90), 225  + ( y * 90)  );
+        g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (25 + (x * 90), 275  + ( y * 90)  );
+        g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
         gridlist.add(g);
-        
+
         // Top Entrance
-        g = new Tile (175 + (x * 90), 25  + ( y * 90)  );
+        g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (225 + (x * 90), 25  + ( y * 90)  );
+        g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (275 + (x * 90), 25  + ( y * 90)  );
+        g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
         gridlist.add(g);
-        
+
         // Right Entrance
-        g = new Tile (425 + (x * 90), 175  + ( y * 90)  );
+        g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (425 + (x * 90), 225  + ( y * 90)  );
+        g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (425 + (x * 90), 275  + ( y * 90)  );
+        g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
         gridlist.add(g);
+
         // Bottom Entrance
-        g = new Tile (175 + (x * 90), 425  + ( y * 90)  );
+        g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (225 + (x * 90), 425  + ( y * 90)  );
+        g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
         gridlist.add(g);
-        g = new Tile (275 + (x * 90), 425  + ( y * 90)  );
+        g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
         gridlist.add(g);
     }
+
     @Override
     public void stop() {
         // TODO Auto-generated method stub
