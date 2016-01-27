@@ -20,7 +20,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     @Override
     public void init() {
 
-        setSize(800, 480);
+        setSize(1600, 900);
         setBackground(Color.BLACK);
         setFocusable(true);
         addKeyListener(this);
@@ -120,143 +120,143 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 // has already been generated above.
                 if( map[x][y] == 1)
                 {
-                    
+
                 }
-                                if( map[x][y] == 2)
+                if( map[x][y] == 2)
                 {
-                    
+
                 }
-                                if( map[x][y] == 3)
+                if( map[x][y] == 3)
                 {
-                    
+
                 }
-                                if( map[x][y] == 4)
+                if( map[x][y] == 4)
                 {
-                    
+
                 }
-                                if( map[x][y] == 5)
+                if( map[x][y] == 5)
                 {
-                    
+
                 }
-                                if( map[x][y] == 6)
+                if( map[x][y] == 6)
                 {
-                    
+
                 }
-                                if( map[x][y] == 7)
+                if( map[x][y] == 7)
                 {
-                    
+
                 }
-                                if( map[x][y] == 8)
+                if( map[x][y] == 8)
                 {
-                    
+
                 }
-                                if( map[x][y] == 9)
+                if( map[x][y] == 9)
                 {
-                    
+
                 }
-                                if( map[x][y] == 10)
+                if( map[x][y] == 10)
                 {
-                    
+
                 }
-                                if( map[x][y] == 11)
+                if( map[x][y] == 11)
                 {
-                    
+
                 }
-                                if( map[x][y] == 12)
+                if( map[x][y] == 12)
                 {
-                    
+
                 }
-                                if( map[x][y] == 13)
+                if( map[x][y] == 13)
                 {
-                    
+
                 }
-                                if( map[x][y] == 14)
+                if( map[x][y] == 14)
                 {
-                    
+
                 }
             }
         }
 
-                /* the entrances for each room. used to fill in sides of a room that are walls.
-                ////////////////////////////////////////////////
-                ////////////////////////////////////////////////
-                // left entrance
-                Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                gridlist.add(g);
+        /* the entrances for each room. used to fill in sides of a room that are walls.
+        ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
+        // left entrance
+        Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+        gridlist.add(g);
 
-                // Top Entrance
-                g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
+        // Top Entrance
+        g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+        gridlist.add(g);
 
-                // Right Entrance
-                g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                gridlist.add(g);
+        // Right Entrance
+        g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+        gridlist.add(g);
 
-                // Bottom Entrance
-                g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
-                 */
+        // Bottom Entrance
+        g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+        gridlist.add(g);
+        g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+        gridlist.add(g);
+         */
+    }
+
+    @Override
+    public void stop() {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void destroy() {
+        // TODO Auto-generated method stub
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            player.update();
+
+            updateGrid();
+            repaint();
+            try {
+                Thread.sleep(17);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+        }
+    }
 
-            @Override
-            public void stop() {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void destroy() {
-                // TODO Auto-generated method stub
-            }
-
-            @Override
-            public void run() {
-                while (true) {
-                    player.update();
-
-                    updateGrid();
-                    repaint();
-                    try {
-                        Thread.sleep(17);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-
-            @Override
-            public void update(Graphics g) {
-            if (image == null) {
-                image = createImage(this.getWidth(), this.getHeight());
-                second = image.getGraphics();
-            }
-
-            second.setColor(getBackground());
-            second.fillRect(0, 0, getWidth(), getHeight());
-            second.setColor(getForeground());
-            paint(second);
-
-            g.drawImage(image, 0, 0, this);
-
+    @Override
+    public void update(Graphics g) {
+        if (image == null) {
+            image = createImage(this.getWidth(), this.getHeight());
+            second = image.getGraphics();
         }
 
-        @Override
-        public void paint(Graphics g) {
+        second.setColor(getBackground());
+        second.fillRect(0, 0, getWidth(), getHeight());
+        second.setColor(getForeground());
+        paint(second);
+
+        g.drawImage(image, 0, 0, this);
+
+    }
+
+    @Override
+    public void paint(Graphics g) {
         paintGrid(g);
         g.drawImage(character, player.getCenterX() - 5, player.getCenterY() - 5, this);
 
@@ -337,9 +337,9 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         // TODO Auto-generated method stub
 
     }
-    
+
     public static Player getplayer() {
-     return player;   
+        return player;   
     }
 
 }
