@@ -34,7 +34,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
         // Image Setups
         character = getImage(base, "data/character.png");
-        tile = getImage(base, "data/tile.png");
+        tile = getImage(base, "data/tile2.png");
     }
 
     @Override
@@ -54,401 +54,96 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 { 9,  3, 11, 15, 15, 13,  5, 15,  7,  1},
                 { 1,  1,  1,  1,  1,  5,  2,  5, 14,  2}} ;
 
-        for( int x = 0; x <= 9; x++)
-        {
-            for( int y = 0; y <= 9; y++)
-            {
-                if ( map[x][y] == 1)
-                {
-                    // center
-                    //    Grid g = new Tile (15 + (x * 30), 15 + ( y * 30)    );
-                    //   gridlist.add(g);
-
-                    //above
-                    Grid g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    //below
-                    g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // left
-                    //g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    //gridlist.add(g);
-
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // top left
-                    g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 2)
-                {
-                    // center
-                    //    Grid g = new Tile (15 + (x * 30), 15 + ( y * 30)    );
-                    //   gridlist.add(g);
-
-                    //above
-                    //Grid g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    //gridlist.add(g);
-
-                    //below
-                    Grid g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // top left
-                    g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 3)
-                {
-                    // top left
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    //above
-                    g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    //below
-                    g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 4)
-                {
-                    // top left
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-
-                    //above
-                    g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 5)
-                {
-
-                    //above
-                    Grid g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-                    // top left
-                    g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 6)
-                {
-                    // top left
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-
-                    //above
-                    g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 7)
-                {
-                    // top left
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-                    //below
-                    g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-
-                }
-                if ( map[x][y] == 8)
-                {
-                    // top left
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-
-                    //below
-                    g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 9)
-                {
-                    // top left
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-
-                    //below
-                    g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    //above
-                    g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 10)
-                {                    
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-
-                }
-                if ( map[x][y] == 11)
-                {
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                    //above
-                    g = new Tile (15 + (x * 30), 5  + ( y * 30)  );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 12)
-                {   
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g);
-                    // left
-                    g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                    gridlist.add(g);
-
-                }
-                if ( map[x][y] == 13)
-                {
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g); 
-
-                    //below
-                    g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30)  );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 14)
-                {
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g); 
-
-                    // right
-                    g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30)  );
-                    gridlist.add(g);
-                }
-                if ( map[x][y] == 15)
-                {
-                    Grid g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30)  );
-                    gridlist.add(g);
-
-                    // bottom right
-                    g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // bottom left
-                    g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) );
-                    gridlist.add(g);
-
-                    // top right
-                    g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) );
-                    gridlist.add(g); 
-                }
-            }
-        }
+        int x = 0;
+        int y = 0;
+
+        ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
+        Grid g = new Tile (25 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 75  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 125  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 325  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 375  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
+        
+        g = new Tile (75 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (125 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (325 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (375 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        
+        ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
+        
+        g = new Tile (425 + (x * 90), 75  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 125  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 325  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 375  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        
+        ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
+        
+        g = new Tile (75 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (125 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (325 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (375 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        
+        ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
+        // left entrance
+        g = new Tile (25 + (x * 90), 175  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 225  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (25 + (x * 90), 275  + ( y * 90)  );
+        gridlist.add(g);
+        
+        // Top Entrance
+        g = new Tile (175 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (225 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (275 + (x * 90), 25  + ( y * 90)  );
+        gridlist.add(g);
+        
+        // Right Entrance
+        g = new Tile (425 + (x * 90), 175  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 225  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (425 + (x * 90), 275  + ( y * 90)  );
+        gridlist.add(g);
+        // Bottom Entrance
+        g = new Tile (175 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (225 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
+        g = new Tile (275 + (x * 90), 425  + ( y * 90)  );
+        gridlist.add(g);
     }
-
     @Override
     public void stop() {
         // TODO Auto-generated method stub
@@ -508,7 +203,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintGrid(Graphics g) {
         for (int i = 0; i < gridlist.size(); i++) {
             Grid e = (Grid) gridlist.get(i);
-            g.drawImage(tile, e.getCenterX() - 5, e.getCenterY() - 5, this);
+            g.drawImage(tile, e.getCenterX() - 15, e.getCenterY() - 15, this);
         }
     }
 
@@ -517,19 +212,19 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
         switch (e.getKeyCode()) {
             case KeyEvent.VK_UP:
-            player.setCenterY(player.getCenterY() - 10);
+            player.moveUp();
             break;
 
             case KeyEvent.VK_DOWN:
-            player.setCenterY(player.getCenterY() + 10);
+            player.moveDown();
             break;
 
             case KeyEvent.VK_LEFT:
-            player.setCenterX(player.getCenterX() - 10);
+            player.moveLeft();
             break;
 
             case KeyEvent.VK_RIGHT:
-            player.setCenterX(player.getCenterX() + 10);
+            player.moveRight();
             break;
 
             case KeyEvent.VK_SPACE:
