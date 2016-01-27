@@ -1,0 +1,12 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ update()
+comment1.params=
+comment1.target=int\ getCenterX()
+comment2.params=
+comment2.target=int\ getCenterY()
+comment3.params=centerX
+comment3.target=void\ setCenterX(int)
+comment4.params=centerY
+comment4.target=void\ setCenterY(int)
+numComments=5
