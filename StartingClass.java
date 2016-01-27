@@ -120,59 +120,263 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 // has already been generated above.
                 if( map[x][y] == 1)
                 {
+                    // Top Entrance
+                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
 
+                    // Right Entrance
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Bottom Entrance
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 2)
                 {
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
 
+                    // Right Entrance
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Bottom Entrance
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 3)
                 {
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
 
+                    // Top Entrance
+                    g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);    
+
+                    // Bottom Entrance
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 4)
                 {
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
 
+                    // Top Entrance
+                    g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Right Entrance
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 5)
                 {
 
+                    // Top Entrance
+                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Right Entrance
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 6)
                 {
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Top Entrance
+                    g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
 
                 }
                 if( map[x][y] == 7)
                 {
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
 
+                    // Bottom Entrance
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 8)
                 {
 
+                    // Right Entrance
+                    Grid g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Bottom Entrance
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 9)
                 {
 
+                    // Top Entrance
+                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+
+                    // Bottom Entrance
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 10)
                 {
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
 
+                    // Right Entrance
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 11)
                 {
 
+                    // Top Entrance
+                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
+                    gridlist.add(g);
+
                 }
                 if( map[x][y] == 12)
                 {
-
+                    // left entrance
+                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 13)
                 {
 
+                    // Bottom Entrance
+                    Grid g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
+                    gridlist.add(g);
                 }
                 if( map[x][y] == 14)
                 {
 
+                    // Right Entrance
+                    Grid g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
+                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
+                    gridlist.add(g);
                 }
             }
         }
@@ -281,19 +485,19 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void keyPressed(KeyEvent e) {
 
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
             player.moveUp();
             break;
 
-            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
             player.moveDown();
             break;
 
-            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
             player.moveLeft();
             break;
 
-            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
             player.moveRight();
             break;
 
@@ -308,19 +512,19 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP:
+            case KeyEvent.VK_W:
             player.stop();
             break;
 
-            case KeyEvent.VK_DOWN:
+            case KeyEvent.VK_S:
             player.stop();
             break;
 
-            case KeyEvent.VK_LEFT:
+            case KeyEvent.VK_A:
             player.stop();
             break;
 
-            case KeyEvent.VK_RIGHT:
+            case KeyEvent.VK_D:
             player.stop();
             break;
 
