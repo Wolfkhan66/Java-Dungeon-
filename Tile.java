@@ -25,46 +25,43 @@ public class Tile {
     }
 
     public void update() {                
-
-                r.setBounds(centerX, centerY, 50, 50);
+        
+        //speedX = player.getSpeedX();
+        //speedY = player.getSpeedY();
+        
+        centerX += speedX;
+        centerY += speedY;
+        
+        r.setBounds(centerX, centerY, 50, 50);
         if(r.intersects(Player.CollisionZone) && type == 1) {
             checkVerticalCollision(Player.Top, Player.Bottom);
             checkSideCollision(Player.Left, Player.Right);
         }
-        
-        if (player.getCenterX() < 0) {
-            centerX += player.getSpeedX(); //This changes centerX by adding speedX.
-        }
-        else if (player.getCenterX() > 0) {
-            centerX += player.getSpeedX(); //This changes centerX by adding speedX.
-        }
-
-        if (player.getCenterY() < 0) {
-            centerY += player.getSpeedY(); //This changes centerY by adding speedY.
-        }
-        else if (player.getCenterY() > 0) {
-            centerY += player.getSpeedY(); //This changes centerY by adding speedY.
-        }
-
-        centerX += speedX;
-        centerY += speedY;
     }
 
     public void checkVerticalCollision(Rectangle rtop, Rectangle rbot){
         if (rtop.intersects(r)) {
-            centerX -= player.getSpeedX();
+            player.stopUp();
+            player.setSpeedY(0);
+            player.setCenterY(player.getCenterY() + 5);
         }
         if (rbot.intersects(r)) {
-            centerX -= player.getSpeedX();
+            player.stopDown();
+            player.setSpeedY(0);
+            player.setCenterY(player.getCenterY() - 5);
         }
     }
 
     public void checkSideCollision(Rectangle rleft, Rectangle rright) {
         if (rleft.intersects(r)) {
-            centerY -= player.getSpeedY();
+            player.stopLeft();
+            player.setSpeedX(0);
+            player.setCenterX(player.getCenterX() + 5);
         }
         if (rright.intersects(r)) {
-            centerY -= player.getSpeedY();
+            player.stopRight();
+            player.setSpeedX(0);
+            player.setCenterX(player.getCenterX() - 5);
         }
 
     }

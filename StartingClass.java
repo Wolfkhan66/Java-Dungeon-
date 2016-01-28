@@ -555,5 +555,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public static Player getplayer() {
         return player;   
     }
+    
 
 }

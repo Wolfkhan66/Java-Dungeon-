@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 
 public class Player {
 
-    private int centerX = 100;
-    private int centerY = 100;
+    private int centerX = 120;
+    private int centerY = 120;
     private int speedX = 0;
     private int speedY = 0;
     final int MOVESPEED = 5;
@@ -13,6 +13,7 @@ public class Player {
     private boolean movingRight = false;
     private boolean movingUp = false;
     private boolean movingDown = false;
+    
 
     public static Rectangle Top = new Rectangle(0, 0, 0, 0);
     public static Rectangle Bottom = new Rectangle(0, 0, 0, 0);
@@ -21,7 +22,22 @@ public class Player {
     public static Rectangle CollisionZone = new Rectangle(0, 0, 0, 0);
 
     public void update() {
+        
+                        
+         if (getCenterX() < 0) {
+            centerX += getSpeedX(); //This changes centerX by adding speedX.
+        }
+        else if (getCenterX() > 0) {
+            centerX -= getSpeedX(); //This changes centerX by adding speedX.
+        }
 
+        if (getCenterY() < 0) {
+            centerY += getSpeedY(); //This changes centerY by adding speedY.
+        }
+        else if (getCenterY() > 0) {
+            centerY -= getSpeedY(); //This changes centerY by adding speedY.
+        }
+        
         Top.setRect(centerX - 25 , centerY - 30, 50, 10);
         Bottom.setRect(centerX - 25, centerY + 20, 50, 10);
         Left.setRect(centerX - 30, centerY - 25, 10, 50);
