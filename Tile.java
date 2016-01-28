@@ -26,9 +26,12 @@ public class Tile {
 
     public void update() {                
 
-        centerX += speedX;
-        centerY += speedY;
-
+                r.setBounds(centerX, centerY, 50, 50);
+        if(r.intersects(Player.CollisionZone) && type == 1) {
+            checkVerticalCollision(Player.Top, Player.Bottom);
+            checkSideCollision(Player.Left, Player.Right);
+        }
+        
         if (player.getCenterX() < 0) {
             centerX += player.getSpeedX(); //This changes centerX by adding speedX.
         }
@@ -43,30 +46,27 @@ public class Tile {
             centerY += player.getSpeedY(); //This changes centerY by adding speedY.
         }
 
-        r.setBounds(centerX, centerY, 50, 50);
-        if(r.intersects(Player.CollisionZone)) {
-            checkVerticalCollision(Player.Top, Player.Bottom);
-            checkSideCollision(Player.Left, Player.Right);
-        }
+        centerX += speedX;
+        centerY += speedY;
     }
 
     public void checkVerticalCollision(Rectangle rtop, Rectangle rbot){
         if (rtop.intersects(r)) {
-            player.setSpeedY(0);
+            centerX -= player.getSpeedX();
         }
         if (rbot.intersects(r)) {
-            player.setSpeedY(0);
+            centerX -= player.getSpeedX();
         }
     }
 
     public void checkSideCollision(Rectangle rleft, Rectangle rright) {
-            if (rleft.intersects(r)) {
-                player.setSpeedX(0);
-            }
-            if (rright.intersects(r)) {
-                player.setSpeedX(0);
-            }
-        
+        if (rleft.intersects(r)) {
+            centerY -= player.getSpeedY();
+        }
+        if (rright.intersects(r)) {
+            centerY -= player.getSpeedY();
+        }
+
     }
 
     public int getCenterX() {

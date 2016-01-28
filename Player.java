@@ -9,9 +9,9 @@ public class Player {
     private int speedX = 0;
     private int speedY = 0;
     final int MOVESPEED = 5;
-        private boolean movingLeft = false;
+    private boolean movingLeft = false;
     private boolean movingRight = false;
-        private boolean movingUp = false;
+    private boolean movingUp = false;
     private boolean movingDown = false;
 
     public static Rectangle Top = new Rectangle(0, 0, 0, 0);
@@ -29,24 +29,24 @@ public class Player {
         CollisionZone.setRect(centerX - 90, centerY - 90, 180, 180);
     }
 
-   public void moveRight() {
-            speedX = -MOVESPEED;
+    public void moveRight() {
+        speedX = -MOVESPEED;
     }
 
     public void moveLeft() {
-            speedX = MOVESPEED;
-        
+        speedX = MOVESPEED;
+
     }
 
-       public void moveUp() {
-            speedY = MOVESPEED;
-        
+    public void moveUp() {
+        speedY = MOVESPEED;
+
     }
 
     public void moveDown() {
-            speedY = -MOVESPEED;
+        speedY = -MOVESPEED;
     }
-    
+
     public void stopRight() {
         setMovingRight(false);
         stop();
@@ -57,7 +57,7 @@ public class Player {
         stop();
     }
 
-        public void stopUp() {
+    public void stopUp() {
         setMovingUp(false);
         stop();
     }
@@ -66,6 +66,7 @@ public class Player {
         setMovingDown(false);
         stop();
     }
+
     private void stop() {
         if (isMovingRight() == false && isMovingLeft() == false) {
             speedX = 0;
@@ -78,7 +79,7 @@ public class Player {
         if (isMovingRight() == true && isMovingLeft() == false) {
             moveRight();
         }
-        
+
         if (isMovingUp() == false && isMovingDown() == false) {
             speedY = 0;
         }
@@ -139,8 +140,8 @@ public class Player {
     public void setMovingLeft(boolean movingLeft) {
         this.movingLeft = movingLeft;
     }
-    
-        public boolean isMovingUp() {
+
+    public boolean isMovingUp() {
         return movingUp;
     }
 
