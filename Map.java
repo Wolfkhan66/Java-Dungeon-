@@ -11,17 +11,24 @@ public class Map {
     public ArrayList<Map> map = new ArrayList<Map>();
 
     public void update() {                
-        
-        //speedX = player.getSpeedX();
-        //speedY = player.getSpeedY();
-           
-        centerX += speedX;
-        centerY += speedY;
-        
-        r.setBounds(centerX-20, centerY-20, 40, 40);
-        if(r.intersects(Player.CollisionZone) && type == 1) {
-            checkVerticalCollision(Player.Top, Player.Bottom);
-            checkSideCollision(Player.Left, Player.Right);
+
+    }
+
+    public void checkDoorVerticalCollision(Rectangle rtop, Rectangle rbot){
+        if (rtop.intersects(r)) {
+            player.setCenterY(400);
+        }
+        if (rbot.intersects(r)) {
+            player.setCenterY(80);
+        }
+    }
+
+    public void checkDoorSideCollision(Rectangle rleft, Rectangle rright) {
+          if (rleft.intersects(r)) {
+            player.setCenterX(720);
+        }
+        if (rright.intersects(r)) {
+            player.setCenterX(80);
         }
     }
 
@@ -36,9 +43,9 @@ public class Map {
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() - 5);
         }
-    }
 
-    public void checkSideCollision(Rectangle rleft, Rectangle rright) {
+    }
+        public void checkSideCollision(Rectangle rleft, Rectangle rright) {
         if (rleft.intersects(r)) {
             player.stopLeft();
             player.setSpeedX(0);

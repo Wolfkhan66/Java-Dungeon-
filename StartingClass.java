@@ -36,7 +36,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         tile = getImage(base, "data/tile3.png");
         floor = getImage(base, "data/floor2.png");
         door1 = getImage(base, "data/Door1.png");
-                door2 = getImage(base, "data/Door2.png");
+        door2 = getImage(base, "data/Door2.png");
     }
 
     @Override
@@ -59,49 +59,47 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         int x = 0;
         int y = 0;
 
-        Map g = new Tile (20,20, 1);
+        Map g = new Tile (0,0, 1);
         maparray.add(g);
-        g = new Tile (20,460, 1);
+        g = new Tile (0,440, 1);
         maparray.add(g);
-        g = new Tile (780,460, 1);
+        g = new Tile (760,440, 1);
         maparray.add(g);
-        g = new Tile (780,20, 1);
+        g = new Tile (760,0, 1);
         maparray.add(g);
-        
-        g = new Door ( 20,180,1);
+
+        g = new Door ( 0,160,2); // left
         maparray.add(g);
-                g = new Door ( 780,180,2);
+        g = new Door ( 760,160,3); // right
         maparray.add(g);
-                g = new Door ( 340,20,3);
+        g = new Door ( 320,0,4); // top
         maparray.add(g);
-                g = new Door ( 340,460,4);
+        g = new Door ( 320,440,5); // bottom
         maparray.add(g);
-        
 
         for ( x = 0 ; x <= 6 ; x ++ )
         {
-            g = new Tile (60 + ( x * 40),20, 1);
+            g = new Tile (40 + ( x * 40),0, 1);
             maparray.add(g);
-            g = new Tile (500 + ( x * 40),20, 1);
+            g = new Tile (480 + ( x * 40),0, 1);
             maparray.add(g);
-            g = new Tile (60 + ( x * 40),460, 1);
+            g = new Tile (40 + ( x * 40),440, 1);
             maparray.add(g);
-            g = new Tile (500 + ( x * 40),460, 1);
+            g = new Tile (480 + ( x * 40),440, 1);
             maparray.add(g);
         }
-        
-                for ( x = 0 ; x <= 2 ; x ++ )
+
+        for ( x = 0 ; x <= 2 ; x ++ )
         {
-            g = new Tile (20 ,60 + ( x * 40), 1);
+            g = new Tile (0 ,40 + ( x * 40), 1);
             maparray.add(g);
-            g = new Tile (20,340 + ( x * 40), 1);
+            g = new Tile (0,320 + ( x * 40), 1);
             maparray.add(g);
-            g = new Tile (780,60 + ( x * 40), 1);
+            g = new Tile (760,40 + ( x * 40), 1);
             maparray.add(g);
-            g = new Tile (780,340 + ( x * 40), 1);
+            g = new Tile (760,320 + ( x * 40), 1);
             maparray.add(g);
         }
-        
 
         /*
         // fill in the walls for each room type.
@@ -166,7 +164,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void run() {
         while (true) {
             player.update();
-            
+
             updateMap();
             repaint();
             try {
@@ -217,7 +215,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintMap(Graphics g) {
         for (int i = 0; i < maparray.size(); i++) {
             Map e = (Map) maparray.get(i);
-            g.drawImage(e.getImage(), e.getCenterX() -20 , e.getCenterY() -20 , this);
+            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
         }
     }
 

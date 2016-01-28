@@ -9,11 +9,17 @@ public class Tile extends Map
         r = new Rectangle();
         if (type == 1) {
             tileImage = StartingClass.tile;
-        } else if (type == 2) {
-            tileImage = StartingClass.floor;
         }
         else{
             type = 0;
+        }
+    }
+        public void update() {                
+        
+        r.setBounds(centerX, centerY, 40, 40);
+        if(r.intersects(Player.CollisionZone) && type == 1) {
+            checkVerticalCollision(Player.Top, Player.Bottom);
+            checkSideCollision(Player.Left, Player.Right);
         }
     }
 }
