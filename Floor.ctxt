@@ -1,5 +1,4 @@
 #BlueJ class context
 comment0.params=centerX\ centerY
 comment0.target=Floor(int,\ int)
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Floor\r\n
 numComments=1

@@ -12,11 +12,10 @@ import java.util.ArrayList;
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
     private static Player player;
-    private Image image, character, tile, floor;
+    public static Image image, character, tile, floor;
     private Graphics second;
     private URL base;
     private ArrayList<Grid> gridlist = new ArrayList<Grid>();
-    private ArrayList<Floor> floorlist = new ArrayList<Floor>();
     @Override
     public void init() {
 
@@ -63,9 +62,9 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         {
             for (y = 0; y <= 9 ; y++)
             {
-                Floor f = new Floor (225 + (x * 450), 225  + ( y * 450)  );
-                floorlist.add(f);
-                Grid g = new Tile (25 + (x * 450), 25  + ( y * 450)  );
+                Grid g = new Floor (75 + (x * 450), 75  + ( y * 450)  );
+                gridlist.add(g);
+                g = new Tile (25 + (x * 450), 25  + ( y * 450)  );
                 gridlist.add(g);
                 g = new Tile (25 + (x * 450), 75  + ( y * 450)  );
                 gridlist.add(g);
@@ -435,9 +434,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void run() {
         while (true) {
             player.update();
-
             updateGrid();
-            updateFloor();
             repaint();
             try {
                 Thread.sleep(17);
@@ -464,7 +461,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     @Override
     public void paint(Graphics g) {
-        paintFloor(g);
         paintGrid(g);
 
         g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
@@ -487,22 +483,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintGrid(Graphics g) {
         for (int i = 0; i < gridlist.size(); i++) {
             Grid e = (Grid) gridlist.get(i);
-            g.drawImage(tile, e.getCenterX() - 25, e.getCenterY() - 25, this);
-        }
-    }
-
-    private void updateFloor() {
-
-        for (int i = 0; i < floorlist.size(); i++) {
-            Floor e = (Floor) floorlist.get(i);
-            e.update();
-        }
-    }
-
-    private void paintFloor(Graphics g) {
-        for (int i = 0; i < floorlist.size(); i++) {
-            Floor e = (Floor) floorlist.get(i);
-            g.drawImage(floor, e.getCenterX() - 175, e.getCenterY() - 175, this);
+            g.drawImage(e.getImage(), e.getCenterX() - 25, e.getCenterY() - 25, this);
         }
     }
 
@@ -512,18 +493,22 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
             player.moveUp();
+            player.setMovingUp(true);
             break;
 
             case KeyEvent.VK_S:
             player.moveDown();
+            player.setMovingDown(true);
             break;
 
             case KeyEvent.VK_A:
             player.moveLeft();
+            player.setMovingLeft(true);
             break;
 
             case KeyEvent.VK_D:
             player.moveRight();
+            player.setMovingRight(true);
             break;
 
             case KeyEvent.VK_SPACE:
@@ -538,23 +523,23 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
-            player.stop();
+            player.stopUp();
             break;
 
             case KeyEvent.VK_S:
-            player.stop();
+            player.stopDown();
             break;
 
             case KeyEvent.VK_A:
-            player.stop();
+            player.stopLeft();
             break;
 
             case KeyEvent.VK_D:
-            player.stop();
+            player.stopRight();
             break;
 
             case KeyEvent.VK_SPACE:
-            System.out.println("Stop jumping");
+            System.out.println("");
             break;
 
         }

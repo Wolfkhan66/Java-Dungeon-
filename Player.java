@@ -4,10 +4,15 @@ import java.awt.Rectangle;
 
 public class Player {
 
-    private int centerX = 400;
-    private int centerY = 240;
+    private int centerX = 100;
+    private int centerY = 100;
     private int speedX = 0;
     private int speedY = 0;
+    final int MOVESPEED = 5;
+        private boolean movingLeft = false;
+    private boolean movingRight = false;
+        private boolean movingUp = false;
+    private boolean movingDown = false;
 
     public static Rectangle Top = new Rectangle(0, 0, 0, 0);
     public static Rectangle Bottom = new Rectangle(0, 0, 0, 0);
@@ -24,25 +29,67 @@ public class Player {
         CollisionZone.setRect(centerX - 90, centerY - 90, 180, 180);
     }
 
-    public void moveRight() {
-        speedX = -6;
+   public void moveRight() {
+            speedX = -MOVESPEED;
     }
 
     public void moveLeft() {
-        speedX = 6;
+            speedX = MOVESPEED;
+        
     }
 
-    public void moveUp() {
-        speedY = 6;
+       public void moveUp() {
+            speedY = MOVESPEED;
+        
     }
 
     public void moveDown() {
-        speedY =  -6;
+            speedY = -MOVESPEED;
+    }
+    
+    public void stopRight() {
+        setMovingRight(false);
+        stop();
     }
 
-    public void stop() {
-        speedX = 0;
-        speedY = 0;
+    public void stopLeft() {
+        setMovingLeft(false);
+        stop();
+    }
+
+        public void stopUp() {
+        setMovingUp(false);
+        stop();
+    }
+
+    public void stopDown() {
+        setMovingDown(false);
+        stop();
+    }
+    private void stop() {
+        if (isMovingRight() == false && isMovingLeft() == false) {
+            speedX = 0;
+        }
+
+        if (isMovingRight() == false && isMovingLeft() == true) {
+            moveLeft();
+        }
+
+        if (isMovingRight() == true && isMovingLeft() == false) {
+            moveRight();
+        }
+        
+        if (isMovingUp() == false && isMovingDown() == false) {
+            speedY = 0;
+        }
+
+        if (isMovingUp() == false && isMovingDown() == true) {
+            moveDown();
+        }
+
+        if (isMovingUp() == true && isMovingDown() == false) {
+            moveUp();
+        }
     }
 
     public int getCenterX() {
@@ -77,4 +124,35 @@ public class Player {
         this.speedY = speedY;
     }
 
+    public boolean isMovingRight() {
+        return movingRight;
+    }
+
+    public void setMovingRight(boolean movingRight) {
+        this.movingRight = movingRight;
+    }
+
+    public boolean isMovingLeft() {
+        return movingLeft;
+    }
+
+    public void setMovingLeft(boolean movingLeft) {
+        this.movingLeft = movingLeft;
+    }
+    
+        public boolean isMovingUp() {
+        return movingUp;
+    }
+
+    public void setMovingUp(boolean movingUp) {
+        this.movingUp = movingUp;
+    }
+
+    public boolean isMovingDown() {
+        return movingDown;
+    }
+
+    public void setMovingDown(boolean movingDown) {
+        this.movingDown = movingDown;
+    }
 }
