@@ -1,5 +1,6 @@
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
 
 public class Player {
 
@@ -8,9 +9,19 @@ public class Player {
     private int speedX = 0;
     private int speedY = 0;
 
-
+    public static Rectangle Top = new Rectangle(0, 0, 0, 0);
+    public static Rectangle Bottom = new Rectangle(0, 0, 0, 0);
+    public static Rectangle Left = new Rectangle(0, 0, 0, 0);
+    public static Rectangle Right = new Rectangle(0, 0, 0, 0);
+    public static Rectangle CollisionZone = new Rectangle(0, 0, 0, 0);
 
     public void update() {
+
+        Top.setRect(centerX - 25 , centerY - 30, 50, 10);
+        Bottom.setRect(centerX - 25, centerY + 20, 50, 10);
+        Left.setRect(centerX - 30, centerY - 25, 10, 50);
+        Right.setRect(centerX + 20 , centerY -25, 10, 50);
+        CollisionZone.setRect(centerX - 90, centerY - 90, 180, 180);
     }
 
     public void moveRight() {

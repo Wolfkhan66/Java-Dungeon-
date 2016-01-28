@@ -12,15 +12,15 @@ import java.util.ArrayList;
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
     private static Player player;
-    private Image image, character, tile;
+    private Image image, character, tile, floor;
     private Graphics second;
     private URL base;
     private ArrayList<Grid> gridlist = new ArrayList<Grid>();
-
+    private ArrayList<Floor> floorlist = new ArrayList<Floor>();
     @Override
     public void init() {
 
-        setSize(1600, 900);
+        setSize(800, 480);
         setBackground(Color.BLACK);
         setFocusable(true);
         addKeyListener(this);
@@ -33,8 +33,9 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         }
 
         // Image Setups
-        character = getImage(base, "data/character.png");
+        character = getImage(base, "data/character2.png");
         tile = getImage(base, "data/tile2.png");
+        floor = getImage(base, "data/floor2.png");
     }
 
     @Override
@@ -62,6 +63,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         {
             for (y = 0; y <= 9 ; y++)
             {
+                Floor f = new Floor (225 + (x * 450), 225  + ( y * 450)  );
+                floorlist.add(f);
                 Grid g = new Tile (25 + (x * 450), 25  + ( y * 450)  );
                 gridlist.add(g);
                 g = new Tile (25 + (x * 450), 75  + ( y * 450)  );
@@ -434,6 +437,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             player.update();
 
             updateGrid();
+            updateFloor();
             repaint();
             try {
                 Thread.sleep(17);
@@ -456,13 +460,19 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         paint(second);
 
         g.drawImage(image, 0, 0, this);
-
     }
 
     @Override
     public void paint(Graphics g) {
+        paintFloor(g);
         paintGrid(g);
-        g.drawImage(character, player.getCenterX() - 5, player.getCenterY() - 5, this);
+
+        g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
+         g.drawRect((int)player.Bottom.getX(), (int)player.Bottom.getY(), (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
+          g.drawRect((int)player.Left.getX(), (int)player.Left.getY(), (int)player.Left.getWidth(), (int)player.Left.getHeight());
+           g.drawRect((int)player.Right.getX(), (int)player.Right.getY(), (int)player.Right.getWidth(), (int)player.Right.getHeight());
+            g.drawRect((int)player.CollisionZone.getX(), (int)player.CollisionZone.getY(), (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
+        g.drawImage(character, player.getCenterX() - 25, player.getCenterY() - 25, this);
 
     }
 
@@ -477,7 +487,22 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintGrid(Graphics g) {
         for (int i = 0; i < gridlist.size(); i++) {
             Grid e = (Grid) gridlist.get(i);
-            g.drawImage(tile, e.getCenterX() - 15, e.getCenterY() - 15, this);
+            g.drawImage(tile, e.getCenterX() - 25, e.getCenterY() - 25, this);
+        }
+    }
+
+    private void updateFloor() {
+
+        for (int i = 0; i < floorlist.size(); i++) {
+            Floor e = (Floor) floorlist.get(i);
+            e.update();
+        }
+    }
+
+    private void paintFloor(Graphics g) {
+        for (int i = 0; i < floorlist.size(); i++) {
+            Floor e = (Floor) floorlist.get(i);
+            g.drawImage(floor, e.getCenterX() - 175, e.getCenterY() - 175, this);
         }
     }
 

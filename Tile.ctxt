@@ -2,4 +2,8 @@
 comment0.params=centerX\ centerY
 comment0.target=Tile(int,\ int)
 comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ Tile\r\n
-numComments=1
+comment1.params=rtop\ rbot
+comment1.target=void\ checkVerticalCollision(java.awt.Rectangle,\ java.awt.Rectangle)
+comment2.params=rleft\ rright
+comment2.target=void\ checkSideCollision(java.awt.Rectangle,\ java.awt.Rectangle)
+numComments=3

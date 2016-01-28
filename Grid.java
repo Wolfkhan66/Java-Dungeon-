@@ -1,18 +1,14 @@
 import java.util.ArrayList;
 public class Grid {
 
-    private int centerX, centerY, speedX, speedY;
+    public int centerX, centerY, speedX, speedY;
     public ArrayList<Grid> grid = new ArrayList<Grid>();
-    private Player player = StartingClass.getplayer();
+    public Player player = StartingClass.getplayer();
  
     // Behavioral Methods
     public void update() {
-        
-        
          centerX += speedX;
         centerY += speedY;
-        
-        
         if (player.getCenterX() < 0) {
             centerX += player.getSpeedX(); //This changes centerX by adding speedX.
         }
@@ -32,20 +28,16 @@ public class Grid {
     public int getCenterX() {
         return centerX;
     }
-
+    
     public int getCenterY() {
         return centerY;
     }
-
-    
     
     public void setCenterX(int centerX) {
         this.centerX = centerX;
     }
-
+    
     public void setCenterY(int centerY) {
         this.centerY = centerY;
-    }
-
-    
+    }   
 }
