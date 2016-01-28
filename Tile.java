@@ -32,7 +32,7 @@ public class Tile {
         centerX += speedX;
         centerY += speedY;
         
-        r.setBounds(centerX, centerY, 50, 50);
+        r.setBounds(centerX-25, centerY-25, 50, 50);
         if(r.intersects(Player.CollisionZone) && type == 1) {
             checkVerticalCollision(Player.Top, Player.Bottom);
             checkSideCollision(Player.Left, Player.Right);

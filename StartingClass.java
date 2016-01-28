@@ -483,7 +483,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintTile(Graphics g) {
         for (int i = 0; i < tilearray.size(); i++) {
             Tile e = (Tile) tilearray.get(i);
-            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY() , this);
+            g.drawImage(e.getImage(), e.getCenterX() -25 , e.getCenterY() -25 , this);
         }
     }
 
