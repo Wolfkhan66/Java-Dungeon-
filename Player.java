@@ -23,18 +23,18 @@ public class Player {
 
     public void update() {
         
-                        
-         if (getCenterX() < 0) {
-            centerX += getSpeedX(); //This changes centerX by adding speedX.
+                       
+         if (getSpeedX() < 0) {
+            centerX -= getSpeedX(); //This changes centerX by adding speedX.
         }
-        else if (getCenterX() > 0) {
+        else if (getSpeedX() > 0) {
             centerX -= getSpeedX(); //This changes centerX by adding speedX.
         }
 
-        if (getCenterY() < 0) {
-            centerY += getSpeedY(); //This changes centerY by adding speedY.
+        if (getSpeedY() < 0) {
+            centerY -= getSpeedY(); //This changes centerY by adding speedY.
         }
-        else if (getCenterY() > 0) {
+        else if (getSpeedY() > 0) {
             centerY -= getSpeedY(); //This changes centerY by adding speedY.
         }
         

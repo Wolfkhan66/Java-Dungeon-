@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ update()
+comment1.params=rtop\ rbot
+comment1.target=void\ checkVerticalCollision(java.awt.Rectangle,\ java.awt.Rectangle)
+comment2.params=rleft\ rright
+comment2.target=void\ checkSideCollision(java.awt.Rectangle,\ java.awt.Rectangle)
+comment3.params=
+comment3.target=int\ getCenterX()
+comment4.params=
+comment4.target=int\ getCenterY()
+comment5.params=centerX
+comment5.target=void\ setCenterX(int)
+comment6.params=centerY
+comment6.target=void\ setCenterY(int)
+comment7.params=tileImage
+comment7.target=void\ setImage(java.awt.Image)
+comment8.params=
+comment8.target=java.awt.Image\ getImage()
+numComments=9
