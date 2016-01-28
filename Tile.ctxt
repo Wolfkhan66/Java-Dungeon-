@@ -1,4 +1,22 @@
 #BlueJ class context
-comment0.params=centerX\ centerY
-comment0.target=Tile(int,\ int)
-numComments=1
+comment0.params=centerX\ centerY\ typeInt
+comment0.target=Tile(int,\ int,\ int)
+comment1.params=
+comment1.target=void\ update()
+comment2.params=rtop\ rbot
+comment2.target=void\ checkVerticalCollision(java.awt.Rectangle,\ java.awt.Rectangle)
+comment3.params=rleft\ rright
+comment3.target=void\ checkSideCollision(java.awt.Rectangle,\ java.awt.Rectangle)
+comment4.params=
+comment4.target=int\ getCenterX()
+comment5.params=
+comment5.target=int\ getCenterY()
+comment6.params=centerX
+comment6.target=void\ setCenterX(int)
+comment7.params=centerY
+comment7.target=void\ setCenterY(int)
+comment8.params=tileImage
+comment8.target=void\ setImage(java.awt.Image)
+comment9.params=
+comment9.target=java.awt.Image\ getImage()
+numComments=10

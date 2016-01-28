@@ -15,7 +15,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public static Image image, character, tile, floor;
     private Graphics second;
     private URL base;
-    private ArrayList<Grid> gridlist = new ArrayList<Grid>();
+    private ArrayList<Tile> tilearray = new ArrayList<Tile>();
     @Override
     public void init() {
 
@@ -62,54 +62,54 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         {
             for (y = 0; y <= 9 ; y++)
             {
-                Grid g = new Floor (75 + (x * 450), 75  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 75  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 125  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 325  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 375  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (25 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
+                Tile g = new Tile (75 + (x * 450), 75  + ( y * 450),2  );
+                tilearray.add(g);
+                g = new Tile (25 + (x * 450), 25  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (25 + (x * 450), 75  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (25 + (x * 450), 125  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (25 + (x * 450), 325  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (25 + (x * 450), 375  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (25 + (x * 450), 425  + ( y * 450),1  );
+                tilearray.add(g);
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
-                g = new Tile (75 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (125 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (325 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (375 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 25  + ( y * 450)  );
-                gridlist.add(g);
+                g = new Tile (75 + (x * 450), 25  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (125 + (x * 450), 25  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (325 + (x * 450), 25  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (375 + (x * 450), 25  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (425 + (x * 450), 25  + ( y * 450),1  );
+                tilearray.add(g);
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
-                g = new Tile (425 + (x * 450), 75  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 125  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 325  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 375  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (425 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
+                g = new Tile (425 + (x * 450), 75  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (425 + (x * 450), 125  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (425 + (x * 450), 325  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (425 + (x * 450), 375  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (425 + (x * 450), 425  + ( y * 450),1  );
+                tilearray.add(g);
                 ////////////////////////////////////////////////
                 ////////////////////////////////////////////////
-                g = new Tile (75 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (125 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (325 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
-                g = new Tile (375 + (x * 450), 425  + ( y * 450)  );
-                gridlist.add(g);
+                g = new Tile (75 + (x * 450), 425  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (125 + (x * 450), 425  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (325 + (x * 450), 425  + ( y * 450),1  );
+                tilearray.add(g);
+                g = new Tile (375 + (x * 450), 425  + ( y * 450),1  );
+                tilearray.add(g);
             }      
         }
 
@@ -123,262 +123,262 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 if( map[x][y] == 1)
                 {
                     // Top Entrance
-                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (175 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Right Entrance
-                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Bottom Entrance
-                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 2)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Right Entrance
-                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Bottom Entrance
-                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 3)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450) ,1 );
+                    tilearray.add(g);
 
                     // Top Entrance
-                    g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);    
+                    g = new Tile (175 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);    
 
                     // Bottom Entrance
-                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450) ,1 );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 4)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Top Entrance
-                    g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
 
                     // Right Entrance
-                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  ,1);
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 5)
                 {
 
                     // Top Entrance
-                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (175 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450),1);
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Right Entrance
-                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 6)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Top Entrance
-                    g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
 
                 }
                 if( map[x][y] == 7)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
 
                     // Bottom Entrance
-                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  ,1);
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 8)
                 {
 
                     // Right Entrance
-                    Grid g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (425 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450) ,1 );
+                    tilearray.add(g);
 
                     // Bottom Entrance
-                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 9)
                 {
 
                     // Top Entrance
-                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (175 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
 
                     // Bottom Entrance
-                    g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (175 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 10)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450) ,1 );
+                    tilearray.add(g);
 
                     // Right Entrance
-                    g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    g = new Tile (425 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 11)
                 {
 
                     // Top Entrance
-                    Grid g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (175 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 25  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 25  + ( y * 450),1  );
+                    tilearray.add(g);
 
                 }
                 if( map[x][y] == 12)
                 {
                     // left entrance
-                    Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (25 + (x * 450), 175  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 225  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (25 + (x * 450), 275  + ( y * 450),1  );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 13)
                 {
 
                     // Bottom Entrance
-                    Grid g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (175 + (x * 450), 425  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (225 + (x * 450), 425  + ( y * 450),1  );
+                    tilearray.add(g);
+                    g = new Tile (275 + (x * 450), 425  + ( y * 450) ,1 );
+                    tilearray.add(g);
                 }
                 if( map[x][y] == 14)
                 {
 
                     // Right Entrance
-                    Grid g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-                    gridlist.add(g);
-                    g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-                    gridlist.add(g);
+                    Tile g = new Tile (425 + (x * 450), 175  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 225  + ( y * 450) ,1 );
+                    tilearray.add(g);
+                    g = new Tile (425 + (x * 450), 275  + ( y * 450) ,1 );
+                    tilearray.add(g);
                 }
             }
         }
@@ -388,35 +388,35 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         ////////////////////////////////////////////////
         // left entrance
         Grid g = new Tile (25 + (x * 450), 175  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (25 + (x * 450), 225  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (25 + (x * 450), 275  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
 
         // Top Entrance
         g = new Tile (175 + (x * 450), 25  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (225 + (x * 450), 25  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (275 + (x * 450), 25  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
 
         // Right Entrance
         g = new Tile (425 + (x * 450), 175  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (425 + (x * 450), 225  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (425 + (x * 450), 275  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
 
         // Bottom Entrance
         g = new Tile (175 + (x * 450), 425  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (225 + (x * 450), 425  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
         g = new Tile (275 + (x * 450), 425  + ( y * 450)  );
-        gridlist.add(g);
+        tilearray.add(g);
          */
     }
 
@@ -434,7 +434,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void run() {
         while (true) {
             player.update();
-            updateGrid();
+            updateTile();
             repaint();
             try {
                 Thread.sleep(17);
@@ -461,7 +461,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     @Override
     public void paint(Graphics g) {
-        paintGrid(g);
+        paintTile(g);
 
         g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
          g.drawRect((int)player.Bottom.getX(), (int)player.Bottom.getY(), (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
@@ -472,18 +472,18 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     }
 
-    private void updateGrid() {
+    private void updateTile() {
 
-        for (int i = 0; i < gridlist.size(); i++) {
-            Grid e = (Grid) gridlist.get(i);
+        for (int i = 0; i < tilearray.size(); i++) {
+            Tile e = (Tile) tilearray.get(i);
             e.update();
         }
     }
 
-    private void paintGrid(Graphics g) {
-        for (int i = 0; i < gridlist.size(); i++) {
-            Grid e = (Grid) gridlist.get(i);
-            g.drawImage(e.getImage(), e.getCenterX() - 25, e.getCenterY() - 25, this);
+    private void paintTile(Graphics g) {
+        for (int i = 0; i < tilearray.size(); i++) {
+            Tile e = (Tile) tilearray.get(i);
+            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY() , this);
         }
     }
 
