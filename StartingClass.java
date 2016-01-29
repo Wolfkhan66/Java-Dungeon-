@@ -9,6 +9,7 @@ import java.awt.event.KeyListener;
 import java.net.URL;
 import java.awt.Font;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
@@ -16,16 +17,17 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public static Image image, character, tile, minimap, door1, door2, goblin;
     private Graphics second;
     private URL base;
-    
+
     private ArrayList<Map> maparray = new ArrayList<Map>();
     private ArrayList<Map> roomarray = new ArrayList<Map>();
     private ArrayList<Map> minimaparray = new ArrayList<Map>();
     private ArrayList<Enemy> enemyarray = new ArrayList<Enemy>();
-    
+
     public static int area;
     public static boolean roomchange = true;
-    
+
     private Font font = new Font(null, Font.BOLD, 30);
+    Random r = new Random();
 
     @Override
     public void init() {
@@ -122,6 +124,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 roomarray.clear();
                 int x = 0;
                 enemyarray.clear();
+                Enemy e = new Goblin (10,10,5,0,0, r.nextInt((680 - 80) + 1) + 80, r.nextInt((400 - 80) + 1) + 80,1);
+                enemyarray.add(e);
 
                 for ( x = 0 ; x <= 3 ; x ++ )
                 {   
@@ -216,9 +220,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                         // right wall
                         g = new Tile (760,160 + ( x * 40), 1);
                         roomarray.add(g);  
-                        
-                        Enemy e = new Goblin (10,10,5,0,0,200,200,1);
-                        enemyarray.add(e);
                     }
                     else if ( area == 11){
                         // top wall
