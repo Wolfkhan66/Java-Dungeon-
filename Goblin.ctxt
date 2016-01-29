@@ -1,0 +1,4 @@
+#BlueJ class context
+comment0.params=maxHealth\ currentHealth\ power\ speedX\ speedY\ centerX\ centerY\ type
+comment0.target=Goblin(int,\ int,\ int,\ int,\ int,\ int,\ int,\ int)
+numComments=1

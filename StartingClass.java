@@ -13,14 +13,18 @@ import java.util.ArrayList;
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
     private static Player player;
-    public static Image image, character, tile, minimap, floor, door1, door2;
+    public static Image image, character, tile, minimap, door1, door2, goblin;
     private Graphics second;
     private URL base;
+    
     private ArrayList<Map> maparray = new ArrayList<Map>();
     private ArrayList<Map> roomarray = new ArrayList<Map>();
     private ArrayList<Map> minimaparray = new ArrayList<Map>();
+    private ArrayList<Enemy> enemyarray = new ArrayList<Enemy>();
+    
     public static int area;
     public static boolean roomchange = true;
+    
     private Font font = new Font(null, Font.BOLD, 30);
 
     @Override
@@ -42,9 +46,9 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         character = getImage(base, "data/character2.png");
         tile = getImage(base, "data/tile3.png");
         minimap = getImage(base, "data/tile.png");
-        floor = getImage(base, "data/floor2.png");
         door1 = getImage(base, "data/Door1.png");
         door2 = getImage(base, "data/Door2.png");
+        goblin = getImage(base, "data/tile2.png");
     }
 
     @Override
@@ -55,7 +59,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         area = Map.area;
         int x = 0;
         int y = 0;
-
 
         Map g = new Tile (0,0, 1);
         maparray.add(g);
@@ -118,112 +121,87 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             {
                 roomarray.clear();
                 int x = 0;
+                enemyarray.clear();
+
                 for ( x = 0 ; x <= 3 ; x ++ )
                 {   
                     if ( area == 1){
-
                         // right wall
                         Map g = new Tile (760,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // top wall
                         g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
-
                         // bottom wall
                         g = new Tile (320  + ( x * 40) ,440 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 2){
-
                         // left wall
                         Map g = new Tile (0,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // right wall
                         g = new Tile (760,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // bottom wall
                         g = new Tile (320  + ( x * 40) ,440 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 3){
-
                         // left wall
                         Map g = new Tile (0,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // top wall
                         g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
-
                         // bottom wall
                         g = new Tile (320  + ( x * 40) ,440 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 4){
-
                         // left wall
                         Map g = new Tile (0,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // right wall
                         g = new Tile (760,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // top wall
                         g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 5){
-
                         // right wall
                         Map g = new Tile (760,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // top wall
                         g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 6){
-
                         // left wall
                         Map g = new Tile (0,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // top wall
                         g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 7){
-
                         // left wall
                         Map g = new Tile (0,160 + ( x * 40), 1);
                         roomarray.add(g);
                         // bottom wall
                         g = new Tile (320  + ( x * 40) ,440 , 1);
                         roomarray.add(g);
-
                     }
                     else if ( area == 8){
-
                         // right wall
                         Map g = new Tile (760,160 + ( x * 40), 1);
                         roomarray.add(g);
-
                         // bottom wall
                         g = new Tile (320  + ( x * 40) ,440 , 1);
                         roomarray.add(g);
                     }
                     else if ( area == 9){
-
                         // top wall
                         Map g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
@@ -232,16 +210,17 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                         roomarray.add(g);
                     }
                     else if ( area == 10){
-
                         // left wall
                         Map g = new Tile (0,160 + ( x * 40), 1);
                         roomarray.add(g);
                         // right wall
                         g = new Tile (760,160 + ( x * 40), 1);
-                        roomarray.add(g);
+                        roomarray.add(g);  
+                        
+                        Enemy e = new Goblin (10,10,5,0,0,200,200,1);
+                        enemyarray.add(e);
                     }
                     else if ( area == 11){
-
                         // top wall
                         Map g = new Tile (320 + ( x * 40) , 0 , 1);
                         roomarray.add(g);
@@ -266,6 +245,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             }
             player.update();
             updateMap();
+            updateEnemy();
             repaint();
             try {
                 Thread.sleep(17);
@@ -294,6 +274,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     @Override
     public void paint(Graphics g) {
         paintMap(g);
+        paintEnemy(g);
 
         g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
         g.drawRect((int)player.Bottom.getX(), (int)player.Bottom.getY(), (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
@@ -320,7 +301,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             Map e = (Map) minimaparray.get(i);
             e.update();
         }
-
     }
 
     private void paintMap(Graphics g) {
@@ -334,6 +314,20 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         }
         for (int i = 0; i < minimaparray.size(); i++) {
             Map e = (Map) minimaparray.get(i);
+            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
+        }
+    }
+
+    private void updateEnemy(){
+        for (int i = 0; i < enemyarray.size(); i++) {
+            Enemy e = (Enemy) enemyarray.get(i);
+            e.update();
+        }
+    }
+
+    private void paintEnemy(Graphics g) {
+        for (int i = 0; i < enemyarray.size(); i++) {
+            Enemy e = (Enemy) enemyarray.get(i);
             g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
         }
     }
@@ -379,9 +373,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 {
                     if ( map[x][y] == 1)
                     {
-                        // center
-                        //    Map g = new Tile (15 + (x * 30), 15 + ( y * 30)    );
-                        //   minimaparray.add(g);
 
                         //above
                         Map g = new Tile (15 + (x * 30), 5  + ( y * 30) , 6 );
@@ -390,10 +381,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                         //below
                         g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),6  );
                         minimaparray.add(g);
-
-                        // left
-                        //g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) );
-                        //minimaparray.add(g);
 
                         // right
                         g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
