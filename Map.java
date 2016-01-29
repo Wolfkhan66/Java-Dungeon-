@@ -3,16 +3,16 @@ import java.awt.Image;
 import java.util.ArrayList;
 public class Map {
 
-    public int centerX, centerY, speedX, speedY, type , area;
+    public int centerX, centerY, speedX, speedY, type ;
     public Rectangle r;
     public Image tileImage;
     public Player player = StartingClass.getplayer();
     // Behavioral Methods
 
-    int x = 0;
-    int y = 0;
+    public static int x = 0;
+    public static int y = 0;
 
-    int[][]world = {{ 4, 10,  7,  3,  6,  10,  7,  6, 12,  2},
+    public static int[][]world = {{ 4, 10,  7,  3,  6,  10,  7,  6, 12,  2},
             { 3,  4, 13,  5, 15, 12, 13, 11, 14,  2},
             {11,  7,  5,  7,  5, 15, 15,  8,  3,  3},
             { 5, 14,  2,  5,  7, 11, 14, 10,  8,  9},
@@ -22,22 +22,25 @@ public class Map {
             {11, 14, 15, 15, 12, 15,  7,  3,  5,  7},
             { 9,  3, 11, 15, 15, 13,  5, 15,  7,  1},
             { 1,  1,  1,  1,  1,  5,  2,  5, 14,  2}} ;
-
+            
+    public static int area = world[x][y]; 
 
     public void update() {   
-        
+
     }
 
     public void checkDoorVerticalCollision(Rectangle rtop, Rectangle rbot){
         if (rtop.intersects(r)) {
             player.setCenterY(400);
             y --; 
-                      //      StartingClass.area = world[x][y];
+            StartingClass.area = world[x][y];;
+            StartingClass.roomchange = true;
         }
         if (rbot.intersects(r)) {
             player.setCenterY(80);
             y ++;
-                       //     StartingClass.area = world[x][y];
+            StartingClass.area = world[x][y];;
+            StartingClass.roomchange = true;
         }
     }
 
@@ -45,12 +48,14 @@ public class Map {
         if (rleft.intersects(r)) {
             player.setCenterX(720);
             x --;
-                      //     StartingClass.area = world[x][y];
+            StartingClass.area = world[x][y];;
+            StartingClass.roomchange = true;
         }
         if (rright.intersects(r)) {
             player.setCenterX(80);          
-           x ++;
-                      //     StartingClass.area = world[x][y];
+            x ++;
+            StartingClass.area = world[x][y];;
+            StartingClass.roomchange = true;
         }
     }
 

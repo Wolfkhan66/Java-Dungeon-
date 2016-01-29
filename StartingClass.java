@@ -17,9 +17,11 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private Graphics second;
     private URL base;
     private ArrayList<Map> maparray = new ArrayList<Map>();
-    public static int area = 1;
+    private ArrayList<Map> roomarray = new ArrayList<Map>();
+    public static int area;
+    public static boolean roomchange = true;
     private Font font = new Font(null, Font.BOLD, 30);
-    
+
     @Override
     public void init() {
 
@@ -48,7 +50,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         player = new Player();
         Thread thread = new Thread(this);
         thread.start();
-
+        area = Map.area;
         int x = 0;
         int y = 0;
 
@@ -93,8 +95,9 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             g = new Tile (760,320 + ( x * 40), 1);
             maparray.add(g);
         }
-       
+
     }
+
     @Override
     public void stop() {
         // TODO Auto-generated method stub
@@ -108,7 +111,156 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     @Override
     public void run() {
         while (true) {
+            if ( roomchange == true)
+            {
+                roomarray.clear();
+                int x = 0;
+                for ( x = 0 ; x <= 3 ; x ++ )
+                {   
+                    if ( area == 1){
 
+                        // right wall
+                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // top wall
+                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+
+                        // bottom wall
+                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 2){
+
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // right wall
+                        g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // bottom wall
+                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 3){
+
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // top wall
+                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+
+                        // bottom wall
+                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 4){
+
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // right wall
+                        g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // top wall
+                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 5){
+
+                        // right wall
+                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // top wall
+                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 6){
+
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // top wall
+                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 7){
+
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+                        // bottom wall
+                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+
+                    }
+                    else if ( area == 8){
+
+                        // right wall
+                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+
+                        // bottom wall
+                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+                    }
+                    else if ( area == 9){
+
+                        // top wall
+                        Map g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+                        // bottom wall
+                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+                    }
+                    else if ( area == 10){
+
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+                        // right wall
+                        g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+                    }
+                    else if ( area == 11){
+
+                        // top wall
+                        Map g = new Tile (320 + ( x * 40) , 0 , 1);
+                        roomarray.add(g);
+                    }
+                    else if ( area == 12){
+                        // left wall
+                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        roomarray.add(g);
+                    }
+                    else if ( area == 13){
+                        // bottom wall
+                        Map g = new Tile (320  + ( x * 40) ,440 , 1);
+                        roomarray.add(g);
+                    }
+                    else if ( area == 14){
+                        // right wall
+                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        roomarray.add(g);
+                    }
+                }
+                roomchange = false;
+            }
             player.update();
             updateMap();
             repaint();
@@ -119,7 +271,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             }
         }
 
-        
     }
 
     @Override
@@ -129,7 +280,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             second = image.getGraphics();
         }
 
-            
         second.setColor(getBackground());
         second.fillRect(0, 0, getWidth(), getHeight());
         second.setColor(getForeground());
@@ -149,16 +299,18 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         g.drawRect((int)player.CollisionZone.getX(), (int)player.CollisionZone.getY(), (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
         g.drawImage(character, player.getCenterX() - 25, player.getCenterY() - 25, this);
 
-        		g.setFont(font);
-		g.setColor(Color.WHITE);
-		g.drawString(Integer.toString(area), 740, 30);	
+        g.setFont(font);
+        g.setColor(Color.WHITE);
+        g.drawString(Integer.toString(area), 740, 30);  
     }
-    
 
     private void updateMap() {
-
         for (int i = 0; i < maparray.size(); i++) {
             Map e = (Map) maparray.get(i);
+            e.update();
+        }
+        for (int i = 0; i < roomarray.size(); i++) {
+            Map e = (Map) roomarray.get(i);
             e.update();
         }
 
@@ -167,6 +319,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintMap(Graphics g) {
         for (int i = 0; i < maparray.size(); i++) {
             Map e = (Map) maparray.get(i);
+            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
+        }
+        for (int i = 0; i < roomarray.size(); i++) {
+            Map e = (Map) roomarray.get(i);
             g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
         }
     }
@@ -196,7 +352,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             break;
 
             case KeyEvent.VK_SPACE:
-
+            Map g = new Tile (400,240, 1);
+            maparray.add(g);
             break;
 
         }
