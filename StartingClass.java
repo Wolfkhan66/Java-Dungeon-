@@ -75,12 +75,12 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     @Override
     public void start() {
         Thread thread = new Thread(this);
-        
+
         if (state == GameState.Dead)
         {
             thread.stop();
         }
-        
+
         state = GameState.Running;
         roomchange = true;
 
@@ -150,6 +150,17 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
         if (state == GameState.Running) {
             while (true) {
+
+                ArrayList projectiles = player.getProjectiles();
+                for (int i = 0; i < projectiles.size(); i++) {
+                    Projectile p = (Projectile) projectiles.get(i);
+                    if (p.isVisible() == true) {
+                        p.update();
+                    } else {
+                        projectiles.remove(i);
+                    }
+                }
+
                 if ( roomchange == true)
                 {
 
@@ -314,12 +325,18 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         if (state == GameState.Running) {
             paintMap(g);
             paintEnemy(g);
+            ArrayList projectiles = player.getProjectiles();
+            for (int i = 0; i < projectiles.size(); i++) {
+                Projectile p = (Projectile) projectiles.get(i);
+                g.setColor(Color.YELLOW);
+                g.fillRect(p.getX(), p.getY(), 10, 5);
+            }
 
-            g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
-            g.drawRect((int)player.Bottom.getX(), (int)player.Bottom.getY(), (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
-            g.drawRect((int)player.Left.getX(), (int)player.Left.getY(), (int)player.Left.getWidth(), (int)player.Left.getHeight());
-            g.drawRect((int)player.Right.getX(), (int)player.Right.getY(), (int)player.Right.getWidth(), (int)player.Right.getHeight());
-            g.drawRect((int)player.CollisionZone.getX(), (int)player.CollisionZone.getY(), (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
+            //g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
+            //g.drawRect((int)player.Bottom.getX(), (int)player.Bottom.getY(), (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
+            //g.drawRect((int)player.Left.getX(), (int)player.Left.getY(), (int)player.Left.getWidth(), (int)player.Left.getHeight());
+            //g.drawRect((int)player.Right.getX(), (int)player.Right.getY(), (int)player.Right.getWidth(), (int)player.Right.getHeight());
+            //g.drawRect((int)player.CollisionZone.getX(), (int)player.CollisionZone.getY(), (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
             g.drawImage(character, player.getCenterX() - 25, player.getCenterY() - 25, this);
 
             if(minimapOn == true){
@@ -417,6 +434,13 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             case KeyEvent.VK_D:
             player.moveRight();
             player.setMovingRight(true);
+            break;
+
+            case KeyEvent.VK_CONTROL:
+            if (player.isReadyToFire()) {
+                player.shoot();
+                player.setReadyToFire(false);
+            }
             break;
 
             case KeyEvent.VK_SPACE:
@@ -836,6 +860,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
             case KeyEvent.VK_D:
             player.stopRight();
+            break;
+
+            case KeyEvent.VK_CONTROL:
+            player.setReadyToFire(true);
             break;
 
             case KeyEvent.VK_SPACE:

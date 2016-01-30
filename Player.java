@@ -1,6 +1,7 @@
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.util.ArrayList;
 
 public class Player {
 
@@ -15,12 +16,15 @@ public class Player {
     private boolean movingRight = false;
     private boolean movingUp = false;
     private boolean movingDown = false;
+  	private boolean readyToFire = true;
 
     public static Rectangle Top = new Rectangle(0, 0, 0, 0);
     public static Rectangle Bottom = new Rectangle(0, 0, 0, 0);
     public static Rectangle Left = new Rectangle(0, 0, 0, 0);
     public static Rectangle Right = new Rectangle(0, 0, 0, 0);
     public static Rectangle CollisionZone = new Rectangle(0, 0, 0, 0);
+    
+    	private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 
     public void update() {
 
@@ -44,7 +48,26 @@ public class Player {
         Right.setRect(centerX + 20 , centerY -25, 10, 50);
         CollisionZone.setRect(centerX - 90, centerY - 90, 180, 180);
     }
+    
+    	public void shoot() {
+		if (readyToFire) {
+			Projectile p = new Projectile(centerX - 25, centerY - 25);
+			projectiles.add(p);
+		}
+	}
 
+	public ArrayList getProjectiles() {
+		return projectiles;
+	}
+
+	public boolean isReadyToFire() {
+		return readyToFire;
+	}
+
+	public void setReadyToFire(boolean readyToFire) {
+		this.readyToFire = readyToFire;
+	}
+	
     public void moveRight() {
         speedX = -MOVESPEED;
     }

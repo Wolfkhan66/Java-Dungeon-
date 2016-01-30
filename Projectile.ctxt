@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=startX\ startY
+comment0.target=Projectile(int,\ int)
+comment1.params=
+comment1.target=void\ update()
+comment10.params=visible
+comment10.target=void\ setVisible(boolean)
+comment2.params=
+comment2.target=void\ checkCollision()
+comment3.params=
+comment3.target=int\ getX()
+comment4.params=
+comment4.target=int\ getY()
+comment5.params=
+comment5.target=int\ getSpeedX()
+comment6.params=
+comment6.target=boolean\ isVisible()
+comment7.params=x
+comment7.target=void\ setX(int)
+comment8.params=y
+comment8.target=void\ setY(int)
+comment9.params=speedX
+comment9.target=void\ setSpeedX(int)
+numComments=11
