@@ -14,7 +14,8 @@ import java.util.Random;
 public class StartingClass extends Applet implements Runnable, KeyListener {
 
     private static Player player;
-    public static Image image, character, tile, minimap, door1, door2, goblin;
+    private static Minimapplayer minimapplayer;
+    public static Image image, character, tile, minimap, door1, door2, goblin, mapplayer ;
     private Graphics second;
     private URL base;
 
@@ -25,6 +26,8 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     public static int area;
     public static boolean roomchange = true;
+    public static boolean minimapOn = false;
+
 
     private Font font = new Font(null, Font.BOLD, 30);
     Random r = new Random();
@@ -45,6 +48,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         }
 
         // Image Setups
+        mapplayer = getImage(base, "data/character.png");
         character = getImage(base, "data/character2.png");
         tile = getImage(base, "data/tile3.png");
         minimap = getImage(base, "data/tile.png");
@@ -55,6 +59,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     @Override
     public void start() {
+        minimapplayer = new Minimapplayer();
         player = new Player();
         Thread thread = new Thread(this);
         thread.start();
@@ -121,11 +126,14 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         while (true) {
             if ( roomchange == true)
             {
+
                 roomarray.clear();
                 int x = 0;
                 enemyarray.clear();
                 Enemy e = new Goblin (10,10,5,0,0, r.nextInt((680 - 80) + 1) + 80, r.nextInt((400 - 80) + 1) + 80,1);
                 enemyarray.add(e);
+
+
 
                 for ( x = 0 ; x <= 3 ; x ++ )
                 {   
@@ -244,6 +252,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 }
                 roomchange = false;
             }
+            minimapplayer.update();
             player.update();
             updateMap();
             updateEnemy();
@@ -284,6 +293,9 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         g.drawRect((int)player.CollisionZone.getX(), (int)player.CollisionZone.getY(), (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
         g.drawImage(character, player.getCenterX() - 25, player.getCenterY() - 25, this);
 
+        if(minimapOn == true){
+            g.drawImage(mapplayer, minimapplayer.getCenterX() - 5, minimapplayer.getCenterY() - 5, this);
+        }
         g.setFont(font);
         g.setColor(Color.WHITE);
         g.drawString(Integer.toString(area), 740, 30);  
@@ -367,7 +379,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             break;
 
             case KeyEvent.VK_SPACE:
-
+            minimapOn = true;
             for( int x = 0; x <= 9; x++)
             {
                 for( int y = 0; y <= 9; y++)
@@ -782,6 +794,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
             case KeyEvent.VK_SPACE:
             minimaparray.clear(); 
+            minimapOn = false;
             break;
 
         }
@@ -796,6 +809,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     public static Player getplayer() {
         return player;   
+    }
+
+    public static Minimapplayer getminimapplayer() {
+        return minimapplayer;   
     }
 
 }

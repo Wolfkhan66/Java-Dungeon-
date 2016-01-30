@@ -7,6 +7,7 @@ public class Map {
     public Rectangle r;
     public Image tileImage;
     public Player player = StartingClass.getplayer();
+    public Minimapplayer minimapplayer = StartingClass.getminimapplayer();
     // Behavioral Methods
 
     public static int x = 0;
@@ -22,7 +23,7 @@ public class Map {
             {11, 14, 15, 15, 12, 15,  7,  3,  5,  7},
             { 9,  3, 11, 15, 15, 13,  5, 15,  7,  1},
             { 1,  1,  1,  1,  1,  5,  2,  5, 14,  2}} ;
-            
+
     public static int area = world[x][y]; 
 
     public void update() {   
@@ -35,12 +36,14 @@ public class Map {
             y --; 
             StartingClass.area = world[x][y];;
             StartingClass.roomchange = true;
+            minimapplayer.setCenterY(minimapplayer.getCenterY() - 30);
         }
         if (rbot.intersects(r)) {
             player.setCenterY(80);
             y ++;
             StartingClass.area = world[x][y];;
             StartingClass.roomchange = true;
+            minimapplayer.setCenterY(minimapplayer.getCenterY() + 30);
         }
     }
 
@@ -50,12 +53,14 @@ public class Map {
             x --;
             StartingClass.area = world[x][y];;
             StartingClass.roomchange = true;
+            minimapplayer.setCenterX(minimapplayer.getCenterX() - 30);
         }
         if (rright.intersects(r)) {
             player.setCenterX(80);          
             x ++;
             StartingClass.area = world[x][y];;
             StartingClass.roomchange = true;
+            minimapplayer.setCenterX(minimapplayer.getCenterX() + 30);
         }
     }
 
@@ -70,7 +75,6 @@ public class Map {
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() - 5);
         }
-
     }
 
     public void checkSideCollision(Rectangle rleft, Rectangle rright) {
@@ -84,7 +88,6 @@ public class Map {
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() - 5);
         }
-
     }
 
     public int setArea(){

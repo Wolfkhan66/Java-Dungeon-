@@ -13,7 +13,6 @@ public class Player {
     private boolean movingRight = false;
     private boolean movingUp = false;
     private boolean movingDown = false;
-    
 
     public static Rectangle Top = new Rectangle(0, 0, 0, 0);
     public static Rectangle Bottom = new Rectangle(0, 0, 0, 0);
@@ -22,9 +21,8 @@ public class Player {
     public static Rectangle CollisionZone = new Rectangle(0, 0, 0, 0);
 
     public void update() {
-        
-                       
-         if (getSpeedX() < 0) {
+
+        if (getSpeedX() < 0) {
             centerX -= getSpeedX(); //This changes centerX by adding speedX.
         }
         else if (getSpeedX() > 0) {
@@ -37,7 +35,7 @@ public class Player {
         else if (getSpeedY() > 0) {
             centerY -= getSpeedY(); //This changes centerY by adding speedY.
         }
-        
+
         Top.setRect(centerX - 25 , centerY - 30, 50, 10);
         Bottom.setRect(centerX - 25, centerY + 20, 50, 10);
         Left.setRect(centerX - 30, centerY - 25, 10, 50);
@@ -51,12 +49,10 @@ public class Player {
 
     public void moveLeft() {
         speedX = MOVESPEED;
-
     }
 
     public void moveUp() {
         speedY = MOVESPEED;
-
     }
 
     public void moveDown() {

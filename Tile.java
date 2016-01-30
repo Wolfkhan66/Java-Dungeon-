@@ -18,7 +18,6 @@ public class Tile extends Map
     }
 
     public void update() {                
-
         r.setBounds(centerX, centerY, 40, 40);
         if(r.intersects(Player.CollisionZone) && type == 1) {
             checkVerticalCollision(Player.Top, Player.Bottom);
