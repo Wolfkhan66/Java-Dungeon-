@@ -15,7 +15,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     private static Player player;
     private static Minimapplayer minimapplayer;
-    public static Image image, character, tile, minimap, door1, door2, goblin, mapplayer ;
+    public static Image image, character, tile,bottomleftcorner, bottomrightcorner,bottomwall,leftwall,rightwall,topleftcorner,toprightcorner,topwall ,minimap, door1, door2, goblin, mapplayer ;
     private Graphics second;
     private URL base;
 
@@ -36,7 +36,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void init() {
 
         setSize(800, 480);
-        setBackground(Color.BLUE);
+        setBackground(Color.BLACK);
         setFocusable(true);
         addKeyListener(this);
         Frame frame = (Frame) this.getParent().getParent();
@@ -55,6 +55,16 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         door1 = getImage(base, "data/Door1.png");
         door2 = getImage(base, "data/Door2.png");
         goblin = getImage(base, "data/tile2.png");
+        
+        bottomleftcorner = getImage(base, "data/bottomleftcorner.png");
+        bottomrightcorner = getImage(base, "data/bottomrightcorner.png");
+        bottomwall = getImage(base, "data/bottomwall.png");
+        leftwall = getImage(base, "data/leftwall.png");
+        rightwall = getImage(base, "data/rightwall.png");
+        topleftcorner = getImage(base, "data/topleftcorner.png");
+        toprightcorner = getImage(base, "data/toprightcorner.png");
+        topwall = getImage(base, "data/topwall.png");
+        
     }
 
     @Override
@@ -67,13 +77,13 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         int x = 0;
         int y = 0;
 
-        Map g = new Tile (0,0, 1);
+        Map g = new Tile (0,0, 6);
         maparray.add(g);
         g = new Tile (0,440, 1);
         maparray.add(g);
-        g = new Tile (760,440, 1);
+        g = new Tile (760,440, 2);
         maparray.add(g);
-        g = new Tile (760,0, 1);
+        g = new Tile (760,0, 7);
         maparray.add(g);
 
         g = new Door ( 0,160,2); // left
@@ -87,25 +97,25 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
         for ( x = 0 ; x <= 6 ; x ++ )
         {
-            g = new Tile (40 + ( x * 40),0, 1);
+            g = new Tile (40 + ( x * 40),0, 8);
             maparray.add(g);
-            g = new Tile (480 + ( x * 40),0, 1);
+            g = new Tile (480 + ( x * 40),0, 8);
             maparray.add(g);
-            g = new Tile (40 + ( x * 40),440, 1);
+            g = new Tile (40 + ( x * 40),440, 3);
             maparray.add(g);
-            g = new Tile (480 + ( x * 40),440, 1);
+            g = new Tile (480 + ( x * 40),440, 3);
             maparray.add(g);
         }
 
         for ( x = 0 ; x <= 2 ; x ++ )
         {
-            g = new Tile (0 ,40 + ( x * 40), 1);
+            g = new Tile (0 ,40 + ( x * 40), 4);
             maparray.add(g);
-            g = new Tile (0,320 + ( x * 40), 1);
+            g = new Tile (0,320 + ( x * 40), 4);
             maparray.add(g);
-            g = new Tile (760,40 + ( x * 40), 1);
+            g = new Tile (760,40 + ( x * 40), 5);
             maparray.add(g);
-            g = new Tile (760,320 + ( x * 40), 1);
+            g = new Tile (760,320 + ( x * 40), 5);
             maparray.add(g);
         }
 
@@ -139,114 +149,114 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 {   
                     if ( area == 1){
                         // right wall
-                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        Map g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);
                         // top wall
-                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                         // bottom wall
-                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 2){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                         // right wall
-                        g = new Tile (760,160 + ( x * 40), 1);
+                        g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);
                         // bottom wall
-                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 3){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                         // top wall
-                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                         // bottom wall
-                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 4){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                         // right wall
-                        g = new Tile (760,160 + ( x * 40), 1);
+                        g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);
                         // top wall
-                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                     }
                     else if ( area == 5){
                         // right wall
-                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        Map g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);
                         // top wall
-                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                     }
                     else if ( area == 6){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                         // top wall
-                        g = new Tile (320 + ( x * 40) , 0 , 1);
+                        g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                     }
                     else if ( area == 7){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                         // bottom wall
-                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 8){
                         // right wall
-                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        Map g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);
                         // bottom wall
-                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 9){
                         // top wall
-                        Map g = new Tile (320 + ( x * 40) , 0 , 1);
+                        Map g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                         // bottom wall
-                        g = new Tile (320  + ( x * 40) ,440 , 1);
+                        g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 10){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                         // right wall
-                        g = new Tile (760,160 + ( x * 40), 1);
+                        g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);  
                     }
                     else if ( area == 11){
                         // top wall
-                        Map g = new Tile (320 + ( x * 40) , 0 , 1);
+                        Map g = new Tile (320 + ( x * 40) , 0 , 8);
                         roomarray.add(g);
                     }
                     else if ( area == 12){
                         // left wall
-                        Map g = new Tile (0,160 + ( x * 40), 1);
+                        Map g = new Tile (0,160 + ( x * 40), 4);
                         roomarray.add(g);
                     }
                     else if ( area == 13){
                         // bottom wall
-                        Map g = new Tile (320  + ( x * 40) ,440 , 1);
+                        Map g = new Tile (320  + ( x * 40) ,440 , 3);
                         roomarray.add(g);
                     }
                     else if ( area == 14){
                         // right wall
-                        Map g = new Tile (760,160 + ( x * 40), 1);
+                        Map g = new Tile (760,160 + ( x * 40), 5);
                         roomarray.add(g);
                     }
                 }
@@ -388,31 +398,31 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                     {
 
                         //above
-                        Map g = new Tile (15 + (x * 30), 5  + ( y * 30) , 6 );
+                        Map g = new Tile (15 + (x * 30), 5  + ( y * 30) , 9 );
                         minimaparray.add(g);
 
                         //below
-                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),6  );
+                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // top left
-                        g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 2)
@@ -426,342 +436,342 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                         //minimaparray.add(g);
 
                         //below
-                        Map g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),6  );
+                        Map g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // top left
-                        g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),6  );
+                        g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 3)
                     {
                         // top left
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),6  );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         //above
-                        g = new Tile (15 + (x * 30), 5  + ( y * 30) ,6 );
+                        g = new Tile (15 + (x * 30), 5  + ( y * 30) ,9);
                         minimaparray.add(g);
 
                         //below
-                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),6  );
+                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 4)
                     {
                         // top left
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         //above
-                        g = new Tile (15 + (x * 30), 5  + ( y * 30),6  );
+                        g = new Tile (15 + (x * 30), 5  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 5)
                     {
 
                         //above
-                        Map g = new Tile (15 + (x * 30), 5  + ( y * 30) ,6 );
+                        Map g = new Tile (15 + (x * 30), 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,9 );
                         minimaparray.add(g);
                         // top left
-                        g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) ,6);
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) ,9);
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 6)
                     {
                         // top left
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),6  );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         //above
-                        g = new Tile (15 + (x * 30), 5  + ( y * 30) ,6 );
+                        g = new Tile (15 + (x * 30), 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 7)
                     {
                         // top left
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) ,6);
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) ,9);
                         minimaparray.add(g);
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),9 );
                         minimaparray.add(g);
                         //below
-                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30) ,6 );
+                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                     }
                     if ( map[x][y] == 8)
                     {
                         // top left
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) ,6);
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) ,9);
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         //below
-                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),6  );
+                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),9 );
                         minimaparray.add(g);
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30),6  );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30),9  );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 9)
                     {
                         // top left
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) ,6);
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30) ,9);
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) ,6);
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30) ,9);
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         //below
-                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),6  );
+                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         //above
-                        g = new Tile (15 + (x * 30), 5  + ( y * 30),6  );
+                        g = new Tile (15 + (x * 30), 5  + ( y * 30),9  );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 10)
                     {                    
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,9 );
                         minimaparray.add(g);
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30),9 );
                         minimaparray.add(g);
 
                     }
                     if ( map[x][y] == 11)
                     {
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g);
                         //above
-                        g = new Tile (15 + (x * 30), 5  + ( y * 30),6  );
+                        g = new Tile (15 + (x * 30), 5  + ( y * 30),9  );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 12)
                     {   
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) ,6);
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30) ,9);
                         minimaparray.add(g);
                         // left
-                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) ,6);
+                        g = new Tile ( 5 + (x * 30 )    , 15   + ( y * 30) ,9);
                         minimaparray.add(g);
 
                     }
                     if ( map[x][y] == 13)
                     {
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),6  );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g); 
 
                         //below
-                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30) ,6 );
+                        g = new Tile ( 15 + (x * 30)   , 25  + ( y * 30) ,9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 14)
                     {
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),6  );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30),9  );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g); 
 
                         // right
-                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,6 );
+                        g = new Tile ( 25 + (x * 30 ) , 15 + ( y * 30) ,9 );
                         minimaparray.add(g);
                     }
                     if ( map[x][y] == 15)
                     {
-                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,6 );
+                        Map g = new Tile ( 5 + (x * 30 ) , 5  + ( y * 30) ,9 );
                         minimaparray.add(g);
 
                         // bottom right
-                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // bottom left
-                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),6 );
+                        g = new Tile ( 5 + (x * 30)  , 25  + ( y * 30),9 );
                         minimaparray.add(g);
 
                         // top right
-                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),6 );
+                        g = new Tile ( 25 + (x * 30 ), 5  + ( y * 30),9 );
                         minimaparray.add(g); 
                     }
                 }
