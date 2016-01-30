@@ -9,8 +9,8 @@ public class Enemy {
     public Player player = StartingClass.getplayer();
     // Behavioral Methods
     public void update() {
-        follow();
     }
+    
     public void follow() {
 
             if (player.getCenterX()-25 >= centerX) {
@@ -18,15 +18,42 @@ public class Enemy {
             } else {
                 centerX -= 1;
             }
-            if (player.getCenterY() - 25>= centerY) {
+            if (player.getCenterY() - 25 >= centerY) {
                 centerY += 1 ;
             } else {
                 centerY -= 1;
             }
-        
-
     }
 
+    public void checkVerticalCollision(Rectangle rtop, Rectangle rbot){
+        if (rtop.intersects(r)) {
+            player.stopUp();
+            player.setSpeedY(0);
+            player.setCenterY(player.getCenterY() + 5);
+            centerY -= 10;
+        }
+        if (rbot.intersects(r)) {
+            player.stopDown();
+            player.setSpeedY(0);
+            player.setCenterY(player.getCenterY() - 5);
+                        centerY += 10;
+        }
+    }
+
+    public void checkSideCollision(Rectangle rleft, Rectangle rright) {
+        if (rleft.intersects(r)) {
+            player.stopLeft();
+            player.setSpeedX(0);
+            player.setCenterX(player.getCenterX() + 5);
+            centerX -= 10;
+        }
+        if (rright.intersects(r)) {
+            player.stopRight();
+            player.setSpeedX(0);
+            player.setCenterX(player.getCenterX() - 5);
+            centerX += 10;
+        }
+    }
     public void die() {
 
     }

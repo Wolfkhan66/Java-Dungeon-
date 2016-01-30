@@ -1,3 +1,4 @@
+import java.awt.Rectangle;
 public class Goblin extends Enemy{
 
     public Goblin(int maxHealth, int currentHealth, int power, int speedX ,int speedY, int centerX, int centerY, int type){
@@ -8,6 +9,7 @@ public class Goblin extends Enemy{
         setPower(power);
         setSpeedX(speedX);
         setSpeedY(speedY);
+        r = new Rectangle();
 
         if (type == 1)
         {
@@ -17,4 +19,15 @@ public class Goblin extends Enemy{
             type = 0;
         }
     }
+    
+    public void update() {
+        follow();
+        
+        r.setBounds(centerX, centerY, 40, 40);
+        if(r.intersects(Player.CollisionZone) ) {
+            checkVerticalCollision(Player.Top, Player.Bottom);
+            checkSideCollision(Player.Left, Player.Right);
+        }
+    }
+
 }
