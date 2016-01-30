@@ -9,20 +9,21 @@ public class Enemy {
     public Player player = StartingClass.getplayer();
     // Behavioral Methods
     public void update() {
+
     }
-    
+
     public void follow() {
 
-            if (player.getCenterX()-25 >= centerX) {
-                centerX += 1 ;
-            } else {
-                centerX -= 1;
-            }
-            if (player.getCenterY() - 25 >= centerY) {
-                centerY += 1 ;
-            } else {
-                centerY -= 1;
-            }
+        if (player.getCenterX()-25 >= centerX) {
+            centerX += 1 ;
+        } else {
+            centerX -= 1;
+        }
+        if (player.getCenterY() - 25 >= centerY) {
+            centerY += 1 ;
+        } else {
+            centerY -= 1;
+        }
     }
 
     public void checkVerticalCollision(Rectangle rtop, Rectangle rbot){
@@ -31,12 +32,16 @@ public class Enemy {
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() + 5);
             centerY -= 10;
+                    StartingClass.enemyarray.remove(this);
+                    StartingClass.score += 10;
         }
         if (rbot.intersects(r)) {
             player.stopDown();
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() - 5);
-                        centerY += 10;
+            centerY += 10;
+                    StartingClass.enemyarray.remove(this);
+                                        StartingClass.score += 10;
         }
     }
 
@@ -46,14 +51,19 @@ public class Enemy {
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() + 5);
             centerX -= 10;
+                    StartingClass.enemyarray.remove(this);
+                                        StartingClass.score += 10;
         }
         if (rright.intersects(r)) {
             player.stopRight();
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() - 5);
             centerX += 10;
+                    StartingClass.enemyarray.remove(this);
+                                        StartingClass.score += 10;
         }
     }
+
     public void die() {
 
     }
@@ -113,9 +123,11 @@ public class Enemy {
     public void setCenterY(int centerY) {
         this.centerY = centerY;
     }
+
     public void setImage(Image tileImage) {
         this.tileImage = tileImage;
     }
+
     public Image getImage() {
         return tileImage;
     }

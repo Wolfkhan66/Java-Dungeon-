@@ -22,9 +22,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private ArrayList<Map> maparray = new ArrayList<Map>();
     private ArrayList<Map> roomarray = new ArrayList<Map>();
     private ArrayList<Map> minimaparray = new ArrayList<Map>();
-    private ArrayList<Enemy> enemyarray = new ArrayList<Enemy>();
+    public static ArrayList<Enemy> enemyarray = new ArrayList<Enemy>();
 
     public static int area;
+    public static int score = 0;
     public static boolean roomchange = true;
     public static boolean minimapOn = false;
 
@@ -309,6 +310,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         g.setFont(font);
         g.setColor(Color.WHITE);
         g.drawString(Integer.toString(area), 740, 30);  
+        
+                g.setFont(font);
+        g.setColor(Color.WHITE);
+        g.drawString(Integer.toString(score), 40, 30);  
     }
 
     private void updateMap() {
