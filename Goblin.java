@@ -17,5 +17,4 @@ public class Goblin extends Enemy{
             type = 0;
         }
     }
-
 }

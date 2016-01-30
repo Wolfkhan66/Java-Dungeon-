@@ -3,12 +3,27 @@ import java.awt.Rectangle;
 import java.awt.Image;
 public class Enemy {
 
-    private int maxHealth, currentHealth, power, speedX, speedY, centerX, centerY, type;
+    public int maxHealth, currentHealth, power, speedX, speedY, centerX, centerY, type;
     public Image tileImage;
     public Rectangle r;
     public Player player = StartingClass.getplayer();
     // Behavioral Methods
     public void update() {
+        follow();
+    }
+    public void follow() {
+
+            if (player.getCenterX()-25 >= centerX) {
+                centerX += 1 ;
+            } else {
+                centerX -= 1;
+            }
+            if (player.getCenterY() - 25>= centerY) {
+                centerY += 1 ;
+            } else {
+                centerY -= 1;
+            }
+        
 
     }
 
@@ -71,7 +86,9 @@ public class Enemy {
     public void setCenterY(int centerY) {
         this.centerY = centerY;
     }
-
+    public void setImage(Image tileImage) {
+        this.tileImage = tileImage;
+    }
     public Image getImage() {
         return tileImage;
     }

@@ -90,9 +90,7 @@ public class Map {
         }
     }
 
-    public int setArea(){
-        return area;
-    }
+
 
     public int getCenterX() {
         return centerX;
