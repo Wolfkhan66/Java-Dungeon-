@@ -6,9 +6,11 @@ public class Player {
 
     private int centerX = 120;
     private int centerY = 120;
-    private int speedX = 0;
-    private int speedY = 0;
+    public static  int speedX = 0;
+    public static  int speedY = 0;
     final int MOVESPEED = 5;
+    private static int maxhealth = 10;
+    public static int health = maxhealth;
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private boolean movingUp = false;
@@ -167,5 +169,9 @@ public class Player {
 
     public void setMovingDown(boolean movingDown) {
         this.movingDown = movingDown;
+    }
+    
+        public int getHealth() {
+        return health;
     }
 }

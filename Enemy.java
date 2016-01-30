@@ -34,6 +34,7 @@ public class Enemy {
             centerY -= 10;
                     StartingClass.enemyarray.remove(this);
                     StartingClass.score += 10;
+                                                            Player.health -= 5;
         }
         if (rbot.intersects(r)) {
             player.stopDown();
@@ -42,6 +43,7 @@ public class Enemy {
             centerY += 10;
                     StartingClass.enemyarray.remove(this);
                                         StartingClass.score += 10;
+                                                                                Player.health -= 5;
         }
     }
 
@@ -53,6 +55,7 @@ public class Enemy {
             centerX -= 10;
                     StartingClass.enemyarray.remove(this);
                                         StartingClass.score += 10;
+                                        Player.health -= 5;
         }
         if (rright.intersects(r)) {
             player.stopRight();
@@ -61,6 +64,7 @@ public class Enemy {
             centerX += 10;
                     StartingClass.enemyarray.remove(this);
                                         StartingClass.score += 10;
+                                                                                Player.health -= 5;
         }
     }
 
