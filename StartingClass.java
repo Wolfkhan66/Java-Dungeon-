@@ -1,4 +1,6 @@
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.applet.Applet;
 import java.awt.Color;
 import java.awt.Frame;
@@ -25,7 +27,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private URL base;
 
     private ArrayList<Map> maparray = new ArrayList<Map>();
-    private ArrayList<Map> roomarray = new ArrayList<Map>();
     private ArrayList<Map> minimaparray = new ArrayList<Map>();
     public static ArrayList<Enemy> enemyarray = new ArrayList<Enemy>();
 
@@ -53,29 +54,27 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         }
 
         // Image Setups
-        mapplayer = getImage(base, "data/character.png");
-        character = getImage(base, "data/character2.png");
-        tile = getImage(base, "data/tile3.png");
-        minimap = getImage(base, "data/tile.png");
-        door1 = getImage(base, "data/Door1.png");
-        door2 = getImage(base, "data/Door2.png");
-        goblin = getImage(base, "data/tile2.png");
+        mapplayer = getImage(base, "data/Minimap/character.png");
+        character = getImage(base, "data/Player/Player.png");
+        minimap = getImage(base, "data/Minimap/tile.png");
+        door1 = getImage(base, "data/Doors/XDoorsClosed.png");
+        door2 = getImage(base, "data/Doors/YDoorsClosed.png");
+        goblin = getImage(base, "data/Enemies/Goblin.png");
 
-        bottomleftcorner = getImage(base, "data/bottomleftcorner.png");
-        bottomrightcorner = getImage(base, "data/bottomrightcorner.png");
-        bottomwall = getImage(base, "data/bottomwall.png");
-        leftwall = getImage(base, "data/leftwall.png");
-        rightwall = getImage(base, "data/rightwall.png");
-        topleftcorner = getImage(base, "data/topleftcorner.png");
-        toprightcorner = getImage(base, "data/toprightcorner.png");
-        topwall = getImage(base, "data/topwall.png");
+        bottomleftcorner = getImage(base, "data/World1/bottomleftcorner.png");
+        bottomrightcorner = getImage(base, "data/World1/bottomrightcorner.png");
+        bottomwall = getImage(base, "data/World1/bottomwall.png");
+        leftwall = getImage(base, "data/World1/leftwall.png");
+        rightwall = getImage(base, "data/World1/rightwall.png");
+        topleftcorner = getImage(base, "data/World1/topleftcorner.png");
+        toprightcorner = getImage(base, "data/World1/toprightcorner.png");
+        topwall = getImage(base, "data/World1/topwall.png");
 
     }
 
     @Override
     public void start() {
         Thread thread = new Thread(this);
-
         if (state == GameState.Dead)
         {
             thread.stop();
@@ -88,51 +87,62 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
         player = new Player();
         thread.start();
         area = Map.area;
-        int x = 0;
-        int y = 0;
+    }
 
-        Map g = new Tile (0,0, 6);
-        maparray.add(g);
-        g = new Tile (0,440, 1);
-        maparray.add(g);
-        g = new Tile (760,440, 2);
-        maparray.add(g);
-        g = new Tile (760,0, 7);
-        maparray.add(g);
+    private void loadMap(String filename) throws IOException {
+        ArrayList lines = new ArrayList();
+        int width = 0;
+        int height = 0;
 
-        g = new Door ( 0,160,2); // left
-        maparray.add(g);
-        g = new Door ( 760,160,3); // right
-        maparray.add(g);
-        g = new Door ( 320,0,4); // top
-        maparray.add(g);
-        g = new Door ( 320,440,5); // bottom
-        maparray.add(g);
+        BufferedReader reader = new BufferedReader(new FileReader(filename));
+        while (true) {
+            String line = reader.readLine();
+            // no more lines to read
+            if (line == null) {
+                reader.close();
+                break;
+            }
 
-        for ( x = 0 ; x <= 6 ; x ++ )
-        {
-            g = new Tile (40 + ( x * 40),0, 8);
-            maparray.add(g);
-            g = new Tile (480 + ( x * 40),0, 8);
-            maparray.add(g);
-            g = new Tile (40 + ( x * 40),440, 3);
-            maparray.add(g);
-            g = new Tile (480 + ( x * 40),440, 3);
-            maparray.add(g);
+            if (!line.startsWith("!")) {
+                lines.add(line);
+                width = Math.max(width, line.length());
+
+            }
         }
+        height = lines.size();
 
-        for ( x = 0 ; x <= 2 ; x ++ )
-        {
-            g = new Tile (0 ,40 + ( x * 40), 4);
-            maparray.add(g);
-            g = new Tile (0,320 + ( x * 40), 4);
-            maparray.add(g);
-            g = new Tile (760,40 + ( x * 40), 5);
-            maparray.add(g);
-            g = new Tile (760,320 + ( x * 40), 5);
-            maparray.add(g);
+        for (int j = 0; j < 12; j++) {
+            String line = (String) lines.get(j);
+            for (int i = 0; i < width; i++) {
+                System.out.println(i + "is i ");
+
+                if (i < line.length()) {
+                    char ch = line.charAt(i);
+                    Map t = new Tile(40 * i, 40 * j, Character.getNumericValue(ch));
+                    maparray.add(t);
+                    if( ch == 'a')
+                    {
+                        t = new Door ( 320,0,4); // top
+                        maparray.add(t);
+                    }
+                    if( ch == 'b')
+                    {
+                        t = new Door ( 0,160,2); // left
+                        maparray.add(t);
+                    }
+                    if( ch == 'c')
+                    {
+                        t = new Door ( 760,160,3); // right
+                        maparray.add(t);
+                    }
+                    if( ch == 'd')
+                    {
+                        t = new Door ( 320,440,5); // bottom
+                        maparray.add(t);
+                    }
+                }
+            }
         }
-
     }
 
     @Override
@@ -164,129 +174,29 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
                 if ( roomchange == true)
                 {
 
-                    roomarray.clear();
+                    maparray.clear();
                     int x = 0;
                     enemyarray.clear();
-                    Enemy e = new Goblin (10,10,5,0,0, r.nextInt((680 - 80) + 1) + 80, r.nextInt((400 - 80) + 1) + 80,1);
-                    enemyarray.add(e);
+                    Enemy g= new Goblin (10,10,5,0,0, r.nextInt((680 - 80) + 1) + 80, r.nextInt((400 - 80) + 1) + 80,1);
+                    enemyarray.add(g);
 
-                    for ( x = 0 ; x <= 3 ; x ++ )
-                    {   
-                        if ( area == 1){
-                            // right wall
-                            Map g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);
-                            // top wall
-                            g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                            // bottom wall
-                            g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 2){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                            // right wall
-                            g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);
-                            // bottom wall
-                            g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 3){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                            // top wall
-                            g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                            // bottom wall
-                            g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 4){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                            // right wall
-                            g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);
-                            // top wall
-                            g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 5){
-                            // right wall
-                            Map g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);
-                            // top wall
-                            g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 6){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                            // top wall
-                            g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 7){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                            // bottom wall
-                            g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 8){
-                            // right wall
-                            Map g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);
-                            // bottom wall
-                            g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 9){
-                            // top wall
-                            Map g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                            // bottom wall
-                            g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 10){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                            // right wall
-                            g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);  
-                        }
-                        else if ( area == 11){
-                            // top wall
-                            Map g = new Tile (320 + ( x * 40) , 0 , 8);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 12){
-                            // left wall
-                            Map g = new Tile (0,160 + ( x * 40), 4);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 13){
-                            // bottom wall
-                            Map g = new Tile (320  + ( x * 40) ,440 , 3);
-                            roomarray.add(g);
-                        }
-                        else if ( area == 14){
-                            // right wall
-                            Map g = new Tile (760,160 + ( x * 40), 5);
-                            roomarray.add(g);
+                    for ( x = 1; x <= 15; x++)
+                    {
+                        if (area == x)
+                        {
+                            String are = "data/rooms/" + x +".txt";
+                            try {
+                                loadMap(are);
+                            } catch (IOException e) {
+                                // TODO Auto-generated catch block
+                                e.printStackTrace();
+                            }
+
                         }
                     }
                     roomchange = false;
                 }
+
                 minimapplayer.update();
                 player.update();
                 updateMap();
@@ -354,7 +264,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             g.setColor(Color.BLACK);
             g.fillRect(0, 0, 800, 480);
             g.setColor(Color.WHITE);
-            g.drawString("Dead", 360, 240);
+            g.drawString("Press Space To Restart", 160, 240);
 
         }
     }
@@ -362,10 +272,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void updateMap() {
         for (int i = 0; i < maparray.size(); i++) {
             Map e = (Map) maparray.get(i);
-            e.update();
-        }
-        for (int i = 0; i < roomarray.size(); i++) {
-            Map e = (Map) roomarray.get(i);
             e.update();
         }
         for (int i = 0; i < minimaparray.size(); i++) {
@@ -377,10 +283,6 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintMap(Graphics g) {
         for (int i = 0; i < maparray.size(); i++) {
             Map e = (Map) maparray.get(i);
-            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
-        }
-        for (int i = 0; i < roomarray.size(); i++) {
-            Map e = (Map) roomarray.get(i);
             g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
         }
         for (int i = 0; i < minimaparray.size(); i++) {
@@ -877,14 +779,16 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     public void reset(){
         maparray.clear();
-        roomarray.clear();
         minimaparray.clear();
         enemyarray.clear();
         player.health += 10;
         player.speedX = 0;
         player.speedY = 0;
+        Map.x = 0;
+        Map.y = 0;
         score = 0;
         minimapOn = false;
+        roomchange = true ;
         start();
     }
 
