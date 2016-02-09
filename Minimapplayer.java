@@ -4,8 +4,8 @@ import java.awt.Rectangle;
 
 public class Minimapplayer {
 
-    private int centerX = 20;
-    private int centerY = 20;
+    private int centerX = 65;
+    private int centerY = 65;
 
     public void update() {
 

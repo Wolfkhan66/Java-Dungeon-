@@ -21,10 +21,10 @@ public class Goblin extends Enemy{
     }
     
     public void update() {
-        follow();
         
         r.setBounds(centerX, centerY, 40, 40);
         if(r.intersects(Player.CollisionZone) ) {
+                    follow();
             checkVerticalCollision(Player.Top, Player.Bottom);
             checkSideCollision(Player.Left, Player.Right);
         }

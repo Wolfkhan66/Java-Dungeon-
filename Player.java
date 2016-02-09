@@ -46,7 +46,7 @@ public class Player {
         Bottom.setRect(centerX - 25, centerY + 20, 50, 10);
         Left.setRect(centerX - 30, centerY - 25, 10, 50);
         Right.setRect(centerX + 20 , centerY -25, 10, 50);
-        CollisionZone.setRect(centerX - 90, centerY - 90, 180, 180);
+        CollisionZone.setRect(centerX - 180, centerY - 180, 360, 360);
     }
     
     	public void shoot() {

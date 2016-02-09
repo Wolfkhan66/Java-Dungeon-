@@ -32,18 +32,18 @@ public class Enemy {
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() + 5);
             centerY -= 10;
-                    StartingClass.enemyarray.remove(this);
-                    StartingClass.score += 10;
-                                                            Player.health -= 5;
+            StartingClass.enemyarray.remove(this);
+            StartingClass.score += 10;
+            Player.health -= 5;
         }
         if (rbot.intersects(r)) {
             player.stopDown();
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() - 5);
             centerY += 10;
-                    StartingClass.enemyarray.remove(this);
-                                        StartingClass.score += 10;
-                                                                                Player.health -= 5;
+            StartingClass.enemyarray.remove(this);
+            StartingClass.score += 10;
+            Player.health -= 5;
         }
     }
 
@@ -53,18 +53,18 @@ public class Enemy {
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() + 5);
             centerX -= 10;
-                    StartingClass.enemyarray.remove(this);
-                                        StartingClass.score += 10;
-                                        Player.health -= 5;
+            StartingClass.enemyarray.remove(this);
+            StartingClass.score += 10;
+            Player.health -= 5;
         }
         if (rright.intersects(r)) {
             player.stopRight();
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() - 5);
             centerX += 10;
-                    StartingClass.enemyarray.remove(this);
-                                        StartingClass.score += 10;
-                                                                                Player.health -= 5;
+            StartingClass.enemyarray.remove(this);
+            StartingClass.score += 10;
+            Player.health -= 5;
         }
     }
 

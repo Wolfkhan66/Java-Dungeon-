@@ -90,8 +90,6 @@ public class Map {
         }
     }
 
-
-
     public int getCenterX() {
         return centerX;
     }
