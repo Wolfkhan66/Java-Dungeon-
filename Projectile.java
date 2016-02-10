@@ -5,7 +5,8 @@ public class Projectile {
 
 	private int x, y, speedX;
 	private boolean visible;
-	
+	   
+        public Camera camera = StartingClass.getcamera();
 	private Rectangle r;
 	
 	public Projectile(int startX, int startY){
@@ -20,11 +21,11 @@ public class Projectile {
 	public void update(){
 		x += speedX;
 		r.setBounds(x, y, 10, 5);
-		if (x > 800){
+		if (x > 800 + camera.getCenterX()){
 			visible = false;
 			r = null;
 		}
-		if (x < 800){
+		if (x < 800 - camera.getCenterX()){
 			checkCollision();
 		}
 	}

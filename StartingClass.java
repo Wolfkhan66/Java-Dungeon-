@@ -20,6 +20,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     }
     GameState state = GameState.Running;
 
+    private static Camera camera;
     private static Player player;
     private static Minimapplayer minimapplayer;
     public static Image image, character, tile,bottomleftcorner, bottomrightcorner,bottomwall,leftwall,rightwall,topleftcorner,toprightcorner,topwall ,minimap, door1, door2, goblin, mapplayer ;
@@ -85,14 +86,25 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
         minimapplayer = new Minimapplayer();
         player = new Player();
+        camera = new Camera();
         thread.start();
         area = Map.area;
     }
 
-    private void loadMap(String filename, int type) throws IOException {
+    private void loadMap(String filename, int room) throws IOException {
         ArrayList lines = new ArrayList();
         int width = 0;
         int height = 0;
+        int[][]map = {{ 4, 10,  7,  3,  6,  10,  7,  6, 12,  2},
+                { 3,  4, 13,  5, 15, 12, 13, 11, 14,  2},
+                {11,  7,  5,  7,  5, 15, 15,  8,  3,  3},
+                { 5, 14,  2,  5,  7, 11, 14, 10,  8,  9},
+                { 3,  4, 12, 12, 13, 11,  7,  4, 10, 13},
+                { 1,  6, 14, 14,  8,  9,  5,  2,  3,  9},
+                { 6, 15,  7,  6, 10, 15, 10,  2,  9,  1},
+                {11, 14, 15, 15, 12, 15,  7,  3,  5,  7},
+                { 9,  3, 11, 15, 15, 13,  5, 15,  7,  1}, 
+                { 1,  1,  1,  1,  1,  5,  2,  5, 14,  2}} ;
 
         BufferedReader reader = new BufferedReader(new FileReader(filename));
         while (true) {
@@ -109,44 +121,50 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
             }
         }
-        height = lines.size();
-        if (type == 1)
-        {
-            for (int j = 0; j < 12; j++) {
-                String line = (String) lines.get(j);
-                for (int i = 0; i < width; i++) {
-                    System.out.println(i + "is i ");
 
-                    if (i < line.length()) {
-                        char ch = line.charAt(i);
-                        Map t = new Tile(40 * i, 40 * j, Character.getNumericValue(ch));
-                        maparray.add(t);
-                        if( ch == 'a')
-                        {
-                            t = new Door ( 320,0,4); // top
-                            maparray.add(t);
-                        }
-                        if( ch == 'b')
-                        {
-                            t = new Door ( 0,160,2); // left
-                            maparray.add(t);
-                        }
-                        if( ch == 'c')
-                        {
-                            t = new Door ( 760,160,3); // right
-                            maparray.add(t);
-                        }
-                        if( ch == 'd')
-                        {
-                            t = new Door ( 320,440,5); // bottom
-                            maparray.add(t);
+        for (int x = 0; x <= 9 ; x++)
+        {
+            for (int y = 0; y <= 9 ; y++)
+            {
+                if ( map[x][y] == room)
+                {
+                    height = lines.size();
+                    for (int j = 0; j < 12; j++) {
+                        String line = (String) lines.get(j);
+                        for (int i = 0; i < width; i++) {
+                            System.out.println(i + "is i ");
+
+                            if (i < line.length()) {
+                                char ch = line.charAt(i);
+                                Map t = new Tile((40 * i) + (x * 800), (40 * j) + (y * 480), Character.getNumericValue(ch));
+                                maparray.add(t);
+                                if( ch == 'a')
+                                {
+                                    t = new Door ( 320  + (x * 800),0  + (y * 480),4); // top
+                                    maparray.add(t);
+                                }
+                                if( ch == 'b')
+                                {
+                                    t = new Door ( 0 + (x * 800),160 + (y * 480),2); // left
+                                    maparray.add(t);
+                                }
+                                if( ch == 'c')
+                                {
+                                    t = new Door ( 760 + (x * 800),160 + (y * 480),3); // right
+                                    maparray.add(t);
+                                }
+                                if( ch == 'd')
+                                {
+                                    t = new Door ( 320 + (x * 800),440 + (y * 480) ,5); // bottom
+                                    maparray.add(t);
+                                }
+                            }
                         }
                     }
                 }
             }
-        }
-    }
 
+        }}
     private void loadMiniMap(String filename, int room) throws IOException {
         ArrayList lines = new ArrayList();
         int width = 0;
@@ -241,21 +259,17 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
                     for ( x = 1; x <= 15; x++)
                     {
-                        if (area == x)
-                        {
-                            String are = "data/rooms/" + x +".txt";
-                            try {
-                                loadMap(are,1);
-                            } catch (IOException e) {
-                                // TODO Auto-generated catch block
-                                e.printStackTrace();
-                            }
-
+                        String are = "data/rooms/" + x +".txt";
+                        try {
+                            loadMap(are,x);
+                        } catch (IOException e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
                         }
                     }
                     roomchange = false;
                 }
-
+                camera.update();
                 minimapplayer.update();
                 player.update();
                 updateMap();
@@ -298,15 +312,15 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
             for (int i = 0; i < projectiles.size(); i++) {
                 Projectile p = (Projectile) projectiles.get(i);
                 g.setColor(Color.YELLOW);
-                g.fillRect(p.getX(), p.getY(), 10, 5);
+                g.fillRect(p.getX() - camera.getCenterX(), p.getY() - camera.getCenterY(), 10, 5);
             }
 
-            //g.drawRect((int)player.Top.getX(), (int)player.Top.getY(), (int)player.Top.getWidth(), (int)player.Top.getHeight());
-            //g.drawRect((int)player.Bottom.getX(), (int)player.Bottom.getY(), (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
-            //g.drawRect((int)player.Left.getX(), (int)player.Left.getY(), (int)player.Left.getWidth(), (int)player.Left.getHeight());
-            //g.drawRect((int)player.Right.getX(), (int)player.Right.getY(), (int)player.Right.getWidth(), (int)player.Right.getHeight());
-            //g.drawRect((int)player.CollisionZone.getX(), (int)player.CollisionZone.getY(), (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
-            g.drawImage(character, player.getCenterX() - 25, player.getCenterY() - 25, this);
+            g.drawRect((int)player.Top.getX() - camera.getCenterX() + 25, (int)player.Top.getY() - camera.getCenterY() + 25, (int)player.Top.getWidth(), (int)player.Top.getHeight());
+            g.drawRect((int)player.Bottom.getX() - camera.getCenterX()  + 25, (int)player.Bottom.getY() - camera.getCenterY() + 25, (int)player.Bottom.getWidth(), (int)player.Bottom.getHeight());
+            g.drawRect((int)player.Left.getX() - camera.getCenterX() + 25, (int)player.Left.getY() - camera.getCenterY() + 25, (int)player.Left.getWidth(), (int)player.Left.getHeight());
+            g.drawRect((int)player.Right.getX() - camera.getCenterX() + 25, (int)player.Right.getY() - camera.getCenterY() + 25, (int)player.Right.getWidth(), (int)player.Right.getHeight());
+            g.drawRect((int)player.CollisionZone.getX() - camera.getCenterX() + 25, (int)player.CollisionZone.getY() - camera.getCenterY() + 25, (int)player.CollisionZone.getWidth(), (int)player.CollisionZone.getHeight());
+            g.drawImage(character, player.getCenterX() - camera.getCenterX(), player.getCenterY() - camera.getCenterY(), this);
 
             if(minimapOn == true){
                 g.drawImage(mapplayer, minimapplayer.getCenterX() - 5, minimapplayer.getCenterY() - 5, this);
@@ -342,11 +356,11 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintMap(Graphics g) {
         for (int i = 0; i < maparray.size(); i++) {
             Map e = (Map) maparray.get(i);
-            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
+            g.drawImage(e.getImage(), e.getCenterX() + 25 - camera.getCenterX() , e.getCenterY() + 25 - camera.getCenterY() , this);
         }
         for (int i = 0; i < minimaparray.size(); i++) {
             Map e = (Map) minimaparray.get(i);
-            g.drawImage(e.getImage(), e.getCenterX()+50 , e.getCenterY()+50  , this);
+            g.drawImage(e.getImage(), e.getCenterX() + 50 , e.getCenterY() + 50 , this);
         }
     }
 
@@ -360,7 +374,7 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     private void paintEnemy(Graphics g) {
         for (int i = 0; i < enemyarray.size(); i++) {
             Enemy e = (Enemy) enemyarray.get(i);
-            g.drawImage(e.getImage(), e.getCenterX() , e.getCenterY()  , this);
+            g.drawImage(e.getImage(), e.getCenterX()  - camera.getCenterX()  , e.getCenterY()  - camera.getCenterY()  , this);
         }
     }
 
@@ -369,21 +383,29 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
         switch (k.getKeyCode()) {
             case KeyEvent.VK_W:
+            camera.moveUp();
+            camera.setMovingUp(true);
             player.moveUp();
             player.setMovingUp(true);
             break;
 
             case KeyEvent.VK_S:
+            camera.moveDown();
+            camera.setMovingDown(true);
             player.moveDown();
             player.setMovingDown(true);
             break;
 
             case KeyEvent.VK_A:
+            camera.moveLeft();
+            camera.setMovingLeft(true);
             player.moveLeft();
             player.setMovingLeft(true);
             break;
 
             case KeyEvent.VK_D:
+            camera.moveRight();
+            camera.setMovingRight(true);
             player.moveRight();
             player.setMovingRight(true);
             break;
@@ -421,18 +443,22 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
     public void keyReleased(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_W:
+            camera.stopUp();
             player.stopUp();
             break;
 
             case KeyEvent.VK_S:
+            camera.stopDown();
             player.stopDown();
             break;
 
             case KeyEvent.VK_A:
+            camera.stopLeft();
             player.stopLeft();
             break;
 
             case KeyEvent.VK_D:
+            camera.stopRight();
             player.stopRight();
             break;
 
@@ -476,6 +502,10 @@ public class StartingClass extends Applet implements Runnable, KeyListener {
 
     public static Minimapplayer getminimapplayer() {
         return minimapplayer;   
+    }
+
+    public static Camera getcamera() {
+        return camera;   
     }
 
 }

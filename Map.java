@@ -8,6 +8,7 @@ public class Map {
     public Image tileImage;
     public Player player = StartingClass.getplayer();
     public Minimapplayer minimapplayer = StartingClass.getminimapplayer();
+    public Camera camera = StartingClass.getcamera();
     // Behavioral Methods
 
     public static int x = 0;
@@ -31,7 +32,7 @@ public class Map {
     }
 
     public void checkDoorVerticalCollision(Rectangle rtop, Rectangle rbot){
-        if (rtop.intersects(r)) {
+       /* if (rtop.intersects(r)) {
             player.setCenterY(400);
             y --; 
             StartingClass.area = world[x][y];;
@@ -44,11 +45,11 @@ public class Map {
             StartingClass.area = world[x][y];;
             StartingClass.roomchange = true;
             minimapplayer.setCenterY(minimapplayer.getCenterY() + 30);
-        }
+        }*/
     }
 
     public void checkDoorSideCollision(Rectangle rleft, Rectangle rright) {
-        if (rleft.intersects(r)) {
+        /* if (rleft.intersects(r)) {
             player.setCenterX(720);
             x --;
             StartingClass.area = world[x][y];;
@@ -61,7 +62,7 @@ public class Map {
             StartingClass.area = world[x][y];;
             StartingClass.roomchange = true;
             minimapplayer.setCenterX(minimapplayer.getCenterX() + 30);
-        }
+        } */
     }
 
     public void checkVerticalCollision(Rectangle rtop, Rectangle rbot){
@@ -69,11 +70,17 @@ public class Map {
             player.stopUp();
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() + 5);
+            camera.stopUp();
+            camera.setSpeedY(0);
+            camera.setCenterY(camera.getCenterY() + 5);
         }
         if (rbot.intersects(r)) {
             player.stopDown();
             player.setSpeedY(0);
             player.setCenterY(player.getCenterY() - 5);
+            camera.stopDown();
+            camera.setSpeedY(0);
+            camera.setCenterY(camera.getCenterY() - 5);
         }
     }
 
@@ -82,11 +89,17 @@ public class Map {
             player.stopLeft();
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() + 5);
+            camera.stopLeft();
+            camera.setSpeedX(0);
+            camera.setCenterX(camera.getCenterX() + 5);
         }
         if (rright.intersects(r)) {
             player.stopRight();
             player.setSpeedX(0);
             player.setCenterX(player.getCenterX() - 5);
+            camera.stopRight();
+            camera.setSpeedX(0);
+            camera.setCenterX(camera.getCenterX() - 5);
         }
     }
 

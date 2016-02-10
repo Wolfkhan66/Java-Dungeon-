@@ -1,74 +1,48 @@
 
-import java.awt.Graphics;
-import java.awt.Rectangle;
-import java.util.ArrayList;
+/**
+ * Write a description of class Camera here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Camera
+{
+    // instance variables - replace the example below with your own
 
-public class Player {
-
-    private int centerX = 375;
-    private int centerY = 215;
-    public static  int speedX = 0;
-    public static  int speedY = 0;
+    private int centerX = 0;
+    private int centerY = 0;
+    private int speedX = 0;
+    private int speedY = 0;
     final int MOVESPEED = 5;
-    private static int maxhealth = 10;
-    public static int health = maxhealth;
     private boolean movingLeft = false;
     private boolean movingRight = false;
     private boolean movingUp = false;
     private boolean movingDown = false;
-    private boolean readyToFire = true;
 
-    public static Rectangle Top = new Rectangle(0, 0, 0, 0);
-    public static Rectangle Bottom = new Rectangle(0, 0, 0, 0);
-    public static Rectangle Left = new Rectangle(0, 0, 0, 0);
-    public static Rectangle Right = new Rectangle(0, 0, 0, 0);
-    public static Rectangle CollisionZone = new Rectangle(0, 0, 0, 0);
+    /**
+     * Constructor for objects of class Camera
+     */
+    public void update()
+    {
+        // initialise instance variables
 
-    private ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
+            centerX -= speedX;
+            centerY -= speedY;
+            
+    }
     
-        public Camera camera = StartingClass.getcamera();
-
-    public void update() {
-
-        centerX -= speedX;
-        centerY -= speedY;    
-
-        Top.setRect(centerX - 25 , centerY - 30, 50, 10);
-        Bottom.setRect(centerX - 25, centerY + 20, 50, 10);
-        Left.setRect(centerX - 30, centerY - 25, 10, 50);
-        Right.setRect(centerX + 20 , centerY -25, 10, 50);
-        CollisionZone.setRect(centerX - 180, centerY - 180, 360, 360);
-    }
-
-    public void shoot() {
-        if (readyToFire) {
-            Projectile p = new Projectile( centerX, centerY);
-            projectiles.add(p);
-        }
-    }
-
-    public ArrayList getProjectiles() {
-        return projectiles;
-    }
-
-    public boolean isReadyToFire() {
-        return readyToFire;
-    }
-
-    public void setReadyToFire(boolean readyToFire) {
-        this.readyToFire = readyToFire;
-    }
-
-    public void moveRight() {
+  public void moveRight() {
         speedX = -MOVESPEED;
     }
 
     public void moveLeft() {
         speedX = MOVESPEED;
+
     }
 
     public void moveUp() {
         speedY = MOVESPEED;
+
     }
 
     public void moveDown() {
@@ -183,9 +157,5 @@ public class Player {
 
     public void setMovingDown(boolean movingDown) {
         this.movingDown = movingDown;
-    }
-
-    public int getHealth() {
-        return health;
     }
 }
